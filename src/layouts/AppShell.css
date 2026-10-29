@@ -1,0 +1,16 @@
+.shell {
+  min-height: 100vh;
+  background: var(--bg);
+}
+
+.shell_main {
+  margin-left: 72px; 
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shell_content {
+  flex: 1;
+  padding: 16px 48px 32px;
+}

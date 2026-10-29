@@ -1,0 +1,127 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+  width: 72px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px 12px;
+  overflow: hidden;
+  background: var(--white);
+  border-right: 1px solid var(--line);
+  font-size: 15px;
+  transition: width 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.sidebar:hover,
+.sidebar:focus-within {
+  width: 232px;
+  box-shadow: 12px 0 32px rgba(27, 22, 51, 0.08);
+}
+
+.sidebar_logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  padding-left: 6px;
+  font-size: 20px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.sidebar_logo img {
+  flex: none;
+}
+
+
+.sidebar_logout {
+  margin-top: auto;
+}
+
+
+.sidebar_label {
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.sidebar:hover .sidebar_label,
+.sidebar:focus-within .sidebar_label {
+  opacity: 1;
+}
+
+.sidebar_item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 14px;
+  color: var(--ink);
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+}
+
+.sidebar_item svg {
+  flex: none;
+  color: var(--indigo);
+  transition: transform 0.15s;
+}
+
+.sidebar_item:hover {
+  background: var(--indigo-50);
+}
+
+.sidebar_item:hover svg {
+  transform: scale(1.05);
+}
+
+.sidebar_item.active {
+  background: var(--indigo);
+  color: var(--white);
+  font-weight: 600;
+  box-shadow: 0 3px 10px rgba(91, 75, 217, 0.18);
+}
+
+.sidebar_item.active svg {
+  color: var(--white);
+}
+
+.sidebar_item.active::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--coral);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.sidebar:hover .sidebar_item.active::after,
+.sidebar:focus-within .sidebar_item.active::after {
+  opacity: 1;
+}
+
+.sidebar_logout svg {
+  transform: none;
+  color: var(--coral);
+}
+
+.sidebar_logout:hover {
+  background: rgba(240, 100, 60, 0.12);
+  color: var(--coral);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .sidebar_label {
+    transition: none;
+  }
+}

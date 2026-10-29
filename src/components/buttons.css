@@ -1,0 +1,66 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 24px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.btn_primary {
+  background: var(--indigo);
+  color: var(--white);
+}
+
+.btn_primary:hover {
+  background: var(--deep, #2e2490);
+}
+
+/* the border is an inset shadow so all buttons keep the same size */
+.btn_secondary {
+  background: var(--white);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px #ddd6c8;
+}
+
+.btn_secondary:hover {
+  background: var(--bg);
+}
+
+.btn_danger {
+  background: #b23a1b;
+  color: var(--white);
+}
+
+.btn_danger:hover {
+  background: #8f2a10;
+}
+
+.iconbtn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.iconbtn:hover {
+  background: var(--bg);
+}
+
+.btn:focus-visible,
+.iconbtn:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 2px;
+}

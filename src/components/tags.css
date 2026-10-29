@@ -1,0 +1,177 @@
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-sizing: border-box;
+  width: 108px;
+  height: 28px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.status::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.status_publie,
+.status_accepte {
+  background: #ece9fb;
+  color: #3b2fa8;
+}
+
+.status_encours {
+  background: #ffe3dc;
+  color: #8f2a10;
+}
+
+.status_brouillon,
+.status_enattente {
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px dashed #bdb6a6;
+}
+
+.status_complet {
+  background: #2e2490;
+  color: var(--white);
+}
+
+.status_termine {
+  background: #ece7de;
+  color: var(--muted);
+}
+
+.status_annule,
+.status_refuse {
+  background: var(--white);
+  color: #8f2a10;
+  border: 1px solid var(--coral);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #ece7de;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.chip_teal {
+  background: #e2f1f4;
+  color: #14606e;
+}
+
+.avatar {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ece9fb;
+  color: var(--indigo);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.avatar_48 {
+  width: 48px;
+  height: 48px;
+  font-size: 16px;
+}
+
+.avatar_72 {
+  width: 72px;
+  height: 72px;
+  font-size: 24px;
+}
+
+.datebadge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(150deg, #9fd3de, #e3f3f6);
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.datebadge span {
+  font-size: 10px;
+}
+
+.datebadge_coral {
+  background: linear-gradient(150deg, #ffb59e, #ffe9e2);
+}
+
+.datebadge_indigo {
+  background: linear-gradient(150deg, #c5bef5, #efedfc);
+}
+
+.datebadge_72 {
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  font-size: 22px;
+}
+
+.datebadge_72 span {
+  font-size: 11px;
+}
+
+.bar {
+  height: 10px;
+  border-radius: 5px;
+  background: #ece7de;
+}
+
+.bar_fill {
+  display: block;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--indigo);
+}
+
+.ring {
+  position: relative;
+  width: 76px;
+  height: 76px;
+}
+
+.ring_track {
+  fill: none;
+  stroke: #ece7de;
+  stroke-width: 8;
+}
+
+.ring_value {
+  fill: none;
+  stroke: var(--indigo);
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.ring_label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  font-weight: 600;
+}
