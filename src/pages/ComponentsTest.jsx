@@ -17,6 +17,7 @@ import {
   FileInput,
 } from '../components/inputs';
 import { StatusTag, Chip, Avatar, DateBadge, ProgressBar, ProgressRing } from '../components/tags';
+import { DonutChart } from '../components/Diagram';
 import { Banner, EmptyState, Toast, Skeleton } from '../components/messages';
 import { Popup, Drawer } from '../components/popups';
 import { Loader } from '../components/loader';
@@ -232,6 +233,7 @@ export default function ComponentsTest() {
               params={[
                 ['initials', 'les lettres dans le rond'],
                 ['size', 'optionnel : 36 (par défaut), 48 ou 72'],
+                ['image', 'optionnel : l’adresse d’une photo, sinon les initiales'],
               ]}
             >
               <Avatar initials="SM" />
@@ -284,6 +286,21 @@ export default function ComponentsTest() {
             </Demo>
             <Demo name="ProgressRing">
               <ProgressRing value={82} label="82 %" />
+            </Demo>
+          </div>
+        </section>
+
+        <section className="demo_section">
+          <h2>Diagrammes (Diagram)</h2>
+          <div className="demo_row">
+            <Demo
+              name="DonutChart"
+              params={[
+                ['segments', 'les nombres de chaque groupe, ex. segments={[1194, 86, 4]}'],
+                ['label', 'le texte au milieu du cercle'],
+              ]}
+            >
+              <DonutChart segments={[1194, 86, 4]} label="1 284" />
             </Demo>
           </div>
         </section>
