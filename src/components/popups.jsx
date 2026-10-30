@@ -3,18 +3,18 @@ import { PrimaryButton, SecondaryButton, DangerButton, IconButton } from './butt
 import { TextArea } from './inputs';
 import './popups.css';
 
-export function ConfirmDialog(props) {
+export function Popup(props) {
   return (
     <div className="dialog_overlay">
       <div className="dialog" role="alertdialog" aria-modal="true" aria-label={props.title}>
         <h2 className="dialog_title">{props.title}</h2>
         <p className="dialog_body">{props.body}</p>
 
-        {props.reasonField && <TextArea label="Motif" />}
+        {props.textArea && <TextArea label={props.textAreaLabel} />}
 
         <div className="dialog_actions">
           <SecondaryButton text="Annuler" />
-          {props.destructive ? (
+          {props.tone === 'danger' ? (
             <DangerButton text={props.confirmLabel} />
           ) : (
             <PrimaryButton text={props.confirmLabel} />
@@ -24,6 +24,7 @@ export function ConfirmDialog(props) {
     </div>
   );
 }
+
 
 export function Drawer(props) {
   return (
