@@ -21,6 +21,7 @@ import {
   Switch,
   FileInput,
 } from "../components/inputs";
+import PageTitle from '../components/titles'
 import Card from "../components/cards";
 import {
   StatusTag,
@@ -65,6 +66,28 @@ export default function ComponentsTest() {
           <code>{'<PrimaryButton text="Publier" />'}</code>. Quand un composant
           a plusieurs variantes, les paramètres sont écrits sous la première.
         </p>
+
+        <section className="demo_section">
+          <h2>page title avec lien de retour</h2>
+          <Demo
+            name="PageTitle"
+            params={[
+              ["title", "le titre de la page"],
+              ["subtitle?", "un texte ou des éléments, ce que la page veut"],
+              ["backTo?", "le lien de retour : un objet { text, to }"],
+            ]}
+          >
+            <PageTitle
+              title="Mes événements"
+              subtitle="12 événements"
+              backTo={{
+                text: "Tableau de bord",
+                to: "/organisateur/tableau-de-bord",
+              }}
+            />
+          </Demo>
+        </section>
+
 
         <section className="demo_section">
           <h2>Carte blanche (cards)</h2>
