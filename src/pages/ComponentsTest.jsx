@@ -1,6 +1,11 @@
-import { Bell } from 'lucide-react';
-import AppShell from '../layouts/AppShell';
-import { PrimaryButton, SecondaryButton, DangerButton, IconButton } from '../components/buttons';
+import { Bell } from "lucide-react";
+import AppShell from "../layouts/AppShell";
+import {
+  PrimaryButton,
+  SecondaryButton,
+  DangerButton,
+  IconButton,
+} from "../components/buttons";
 import {
   TextInput,
   NumberInput,
@@ -15,13 +20,21 @@ import {
   Radio,
   Switch,
   FileInput,
-} from '../components/inputs';
-import { StatusTag, Chip, Avatar, DateBadge, ProgressBar, ProgressRing } from '../components/tags';
-import { DonutChart } from '../components/Diagram';
-import { Banner, EmptyState, Toast, Skeleton } from '../components/messages';
-import { Popup, Drawer } from '../components/popups';
-import { Loader } from '../components/loader';
-import './ComponentsTest.css';
+} from "../components/inputs";
+import Card from "../components/cards";
+import {
+  StatusTag,
+  Chip,
+  Avatar,
+  DateBadge,
+  ProgressBar,
+  ProgressRing,
+} from "../components/tags";
+import { DonutChart } from "../components/Diagram";
+import { Banner, EmptyState, Toast, Skeleton } from "../components/messages";
+import { Popup, Drawer } from "../components/popups";
+import { Loader } from "../components/loader";
+import "./ComponentsTest.css";
 
 function Demo(props) {
   return (
@@ -47,28 +60,55 @@ export default function ComponentsTest() {
       <div className="demo">
         <h1>Composants</h1>
         <p className="demo_intro">
-          Chaque composant affiche son nom, puis ses paramètres en rouge avec leur rôle. Un paramètre
-          s’écrit dans la balise : <code>{'<PrimaryButton text="Publier" />'}</code>. Quand un
-          composant a plusieurs variantes, les paramètres sont écrits sous la première.
+          Chaque composant affiche son nom, puis ses paramètres en rouge avec
+          leur rôle. Un paramètre s’écrit dans la balise :{" "}
+          <code>{'<PrimaryButton text="Publier" />'}</code>. Quand un composant
+          a plusieurs variantes, les paramètres sont écrits sous la première.
         </p>
+
+        <section className="demo_section">
+          <h2>Carte blanche (cards)</h2>
+          <div className="demo_row">
+            <Demo
+              name="Card"
+              params={[
+                ["title?", "le titre dans la carte"],
+                ["le contenu", "ce qu'il y a entre les balises"],
+              ]}
+            >
+              <Card title="Informations personnelles">
+                <p>Amine Berrada</p>
+              </Card>
+            </Demo>
+          </div>
+        </section>
 
         <section className="demo_section">
           <h2>Boutons (buttons)</h2>
           <div className="demo_row">
-            <Demo name="PrimaryButton" params={[['text', 'le mot sur le bouton']]}>
+            <Demo
+              name="PrimaryButton"
+              params={[["text", "le mot sur le bouton"]]}
+            >
               <PrimaryButton text="Publier" />
             </Demo>
-            <Demo name="SecondaryButton" params={[['text', 'le mot sur le bouton']]}>
+            <Demo
+              name="SecondaryButton"
+              params={[["text", "le mot sur le bouton"]]}
+            >
               <SecondaryButton text="Annuler" />
             </Demo>
-            <Demo name="DangerButton" params={[['text', 'le mot sur le bouton']]}>
+            <Demo
+              name="DangerButton"
+              params={[["text", "le mot sur le bouton"]]}
+            >
               <DangerButton text="Retirer" />
             </Demo>
             <Demo
               name="IconButton"
               params={[
-                ['icon', 'l’icône, ex. icon={<Bell size={18} />}'],
-                ['label', 'texte lu par les lecteurs d’écran'],
+                ["icon", "l’icône, ex. icon={<Bell size={18} />}"],
+                ["label", "texte lu par les lecteurs d’écran"],
               ]}
             >
               <IconButton icon={<Bell size={18} />} label="Notifications" />
@@ -82,17 +122,20 @@ export default function ComponentsTest() {
             <Demo
               name="TextInput"
               params={[
-                ['label', 'le titre au-dessus du champ'],
-                ['placeholder', 'le texte gris dans le champ'],
+                ["label", "le titre au-dessus du champ"],
+                ["placeholder", "le texte gris dans le champ"],
               ]}
             >
-              <TextInput label="Titre" placeholder="Ex. Atelier Design Thinking" />
+              <TextInput
+                label="Titre"
+                placeholder="Ex. Atelier Design Thinking"
+              />
             </Demo>
             <Demo
               name="NumberInput"
               params={[
-                ['label', 'le titre au-dessus du champ'],
-                ['placeholder', 'le texte gris dans le champ'],
+                ["label", "le titre au-dessus du champ"],
+                ["placeholder", "le texte gris dans le champ"],
               ]}
             >
               <NumberInput label="Prix (MAD)" placeholder="50" />
@@ -100,8 +143,8 @@ export default function ComponentsTest() {
             <Demo
               name="EmailInput"
               params={[
-                ['label', 'le titre au-dessus du champ'],
-                ['placeholder', 'le texte gris dans le champ'],
+                ["label", "le titre au-dessus du champ"],
+                ["placeholder", "le texte gris dans le champ"],
               ]}
             >
               <EmailInput label="E-mail" placeholder="nom@exemple.com" />
@@ -109,40 +152,61 @@ export default function ComponentsTest() {
             <Demo
               name="PasswordInput"
               params={[
-                ['label', 'le titre au-dessus du champ'],
-                ['placeholder', 'le texte gris dans le champ'],
+                ["label", "le titre au-dessus du champ"],
+                ["placeholder", "le texte gris dans le champ"],
               ]}
             >
               <PasswordInput label="Mot de passe" placeholder="••••••••" />
             </Demo>
-            <Demo name="DateInput" params={[['label', 'le titre au-dessus du champ']]}>
+            <Demo
+              name="DateInput"
+              params={[["label", "le titre au-dessus du champ"]]}
+            >
               <DateInput label="Date" />
             </Demo>
-            <Demo name="TimeInput" params={[['label', 'le titre au-dessus du champ']]}>
+            <Demo
+              name="TimeInput"
+              params={[["label", "le titre au-dessus du champ"]]}
+            >
               <TimeInput label="Heure" />
             </Demo>
             <Demo
               name="Select"
               params={[
-                ['label', 'le titre au-dessus de la liste'],
-                ['options', 'la liste des choix, ex. options={[\'Conférence\', \'Atelier\']}'],
+                ["label", "le titre au-dessus de la liste"],
+                [
+                  "options",
+                  "la liste des choix, ex. options={['Conférence', 'Atelier']}",
+                ],
               ]}
             >
-              <Select label="Catégorie" options={['Conférence', 'Atelier', 'Concert']} />
+              <Select
+                label="Catégorie"
+                options={["Conférence", "Atelier", "Concert"]}
+              />
             </Demo>
-            <Demo name="SearchInput" params={[['placeholder', 'le texte gris dans la barre']]}>
+            <Demo
+              name="SearchInput"
+              params={[["placeholder", "le texte gris dans la barre"]]}
+            >
               <SearchInput placeholder="Rechercher un événement…" />
             </Demo>
             <Demo
               name="TextArea"
               params={[
-                ['label', 'le titre au-dessus du champ'],
-                ['placeholder', 'le texte gris dans le champ'],
+                ["label", "le titre au-dessus du champ"],
+                ["placeholder", "le texte gris dans le champ"],
               ]}
             >
-              <TextArea label="Description" placeholder="Décrivez votre événement" />
+              <TextArea
+                label="Description"
+                placeholder="Décrivez votre événement"
+              />
             </Demo>
-            <Demo name="FileInput" params={[['label', 'le titre au-dessus de la zone']]}>
+            <Demo
+              name="FileInput"
+              params={[["label", "le titre au-dessus de la zone"]]}
+            >
               <FileInput label="Affiche" />
             </Demo>
           </div>
@@ -151,14 +215,20 @@ export default function ComponentsTest() {
         <section className="demo_section">
           <h2>Cases, radios et interrupteur (inputs)</h2>
           <div className="demo_row">
-            <Demo name="Checkbox" params={[['label', 'le texte à côté de la case']]}>
+            <Demo
+              name="Checkbox"
+              params={[["label", "le texte à côté de la case"]]}
+            >
               <Checkbox label="J'accepte les conditions" />
             </Demo>
             <Demo
               name="Radio"
               params={[
-                ['label', 'le texte à côté du radio'],
-                ['name', 'le même pour tous les radios d’un groupe, sinon on peut tous les cocher'],
+                ["label", "le texte à côté du radio"],
+                [
+                  "name",
+                  "le même pour tous les radios d’un groupe, sinon on peut tous les cocher",
+                ],
               ]}
             >
               <Radio name="paiement" label="Carte bancaire" />
@@ -166,7 +236,10 @@ export default function ComponentsTest() {
             <Demo name="Radio">
               <Radio name="paiement" label="Espèces" />
             </Demo>
-            <Demo name="Switch" params={[['label', 'le texte à côté de l’interrupteur']]}>
+            <Demo
+              name="Switch"
+              params={[["label", "le texte à côté de l’interrupteur"]]}
+            >
               <Switch label="Notifications par e-mail" />
             </Demo>
           </div>
@@ -179,8 +252,8 @@ export default function ComponentsTest() {
               name="StatusTag · publie"
               params={[
                 [
-                  'status',
-                  'publie, encours, brouillon, complet, termine, annule, accepte, enattente ou refuse',
+                  "status",
+                  "publie, encours, brouillon, complet, termine, annule, accepte, enattente ou refuse",
                 ],
               ]}
             >
@@ -219,8 +292,8 @@ export default function ComponentsTest() {
             <Demo
               name="Chip"
               params={[
-                ['text', 'le mot dans la puce'],
-                ['tone', 'optionnel : teal, sinon gris'],
+                ["text", "le mot dans la puce"],
+                ["tone", "optionnel : teal, sinon gris"],
               ]}
             >
               <Chip text="Tous" />
@@ -231,9 +304,12 @@ export default function ComponentsTest() {
             <Demo
               name="Avatar"
               params={[
-                ['initials', 'les lettres dans le rond'],
-                ['size', 'optionnel : 36 (par défaut), 48 ou 72'],
-                ['image', 'optionnel : l’adresse d’une photo, sinon les initiales'],
+                ["initials", "les lettres dans le rond"],
+                ["size", "optionnel : 36 (par défaut), 48 ou 72"],
+                [
+                  "image",
+                  "optionnel : l’adresse d’une photo, sinon les initiales",
+                ],
               ]}
             >
               <Avatar initials="SM" />
@@ -247,10 +323,10 @@ export default function ComponentsTest() {
             <Demo
               name="DateBadge"
               params={[
-                ['day', 'le jour, ex. 12'],
-                ['month', 'le mois, ex. OCT'],
-                ['size', 'optionnel : 48 (par défaut) ou 72'],
-                ['tone', 'optionnel : coral ou indigo, sinon turquoise'],
+                ["day", "le jour, ex. 12"],
+                ["month", "le mois, ex. OCT"],
+                ["size", "optionnel : 48 (par défaut) ou 72"],
+                ["tone", "optionnel : coral ou indigo, sinon turquoise"],
               ]}
             >
               <DateBadge day="12" month="OCT" />
@@ -270,7 +346,10 @@ export default function ComponentsTest() {
         <section className="demo_section">
           <h2>Progression (tags)</h2>
           <div className="demo_row">
-            <Demo name="ProgressBar" params={[['value', 'un pourcentage de 0 à 100']]}>
+            <Demo
+              name="ProgressBar"
+              params={[["value", "un pourcentage de 0 à 100"]]}
+            >
               <div className="demo_narrow">
                 <ProgressBar value={60} />
               </div>
@@ -278,8 +357,8 @@ export default function ComponentsTest() {
             <Demo
               name="ProgressRing"
               params={[
-                ['value', 'un pourcentage de 0 à 100'],
-                ['label', 'le texte au milieu du cercle'],
+                ["value", "un pourcentage de 0 à 100"],
+                ["label", "le texte au milieu du cercle"],
               ]}
             >
               <ProgressRing value={40} label="12/30" />
@@ -296,8 +375,11 @@ export default function ComponentsTest() {
             <Demo
               name="DonutChart"
               params={[
-                ['segments', 'les nombres de chaque groupe, ex. segments={[1194, 86, 4]}'],
-                ['label', 'le texte au milieu du cercle'],
+                [
+                  "segments",
+                  "les nombres de chaque groupe, ex. segments={[1194, 86, 4]}",
+                ],
+                ["label", "le texte au milieu du cercle"],
               ]}
             >
               <DonutChart segments={[1194, 86, 4]} label="1 284" />
@@ -311,12 +393,18 @@ export default function ComponentsTest() {
             <Demo
               name="Banner · error"
               params={[
-                ['tone', 'error, warning ou info'],
-                ['text', 'le message'],
-                ['action', 'optionnel : un bouton, ex. action={<PrimaryButton text="Réessayer" />}'],
+                ["tone", "error, warning ou info"],
+                ["text", "le message"],
+                [
+                  "action",
+                  'optionnel : un bouton, ex. action={<PrimaryButton text="Réessayer" />}',
+                ],
               ]}
             >
-              <Banner tone="error" text="Paiement refusé. Vérifiez votre carte." />
+              <Banner
+                tone="error"
+                text="Paiement refusé. Vérifiez votre carte."
+              />
             </Demo>
             <Demo name="Banner · warning">
               <Banner tone="warning" text="Il ne reste que 3 places." />
@@ -327,9 +415,9 @@ export default function ComponentsTest() {
             <Demo
               name="EmptyState"
               params={[
-                ['title', 'le titre en gras'],
-                ['text', 'la phrase sous le titre'],
-                ['action', 'optionnel : un bouton'],
+                ["title", "le titre en gras"],
+                ["text", "la phrase sous le titre"],
+                ["action", "optionnel : un bouton"],
               ]}
             >
               <EmptyState
@@ -338,12 +426,18 @@ export default function ComponentsTest() {
                 action={<PrimaryButton text="+ Créer un événement" />}
               />
             </Demo>
-            <Demo name="Toast" params={[['message', 'le texte de la notification']]}>
+            <Demo
+              name="Toast"
+              params={[["message", "le texte de la notification"]]}
+            >
               <div className="demo_row">
                 <Toast message="Inscription acceptée" />
               </div>
             </Demo>
-            <Demo name="Skeleton" params={[['aucun', 'ce composant n’a pas de paramètre']]}>
+            <Demo
+              name="Skeleton"
+              params={[["aucun", "ce composant n’a pas de paramètre"]]}
+            >
               <div className="demo_narrow">
                 <Skeleton />
               </div>
@@ -356,7 +450,9 @@ export default function ComponentsTest() {
           <div className="demo_row">
             <Demo
               name="Loader · size 24"
-              params={[['size', 'optionnel : la taille en pixels, 56 par défaut']]}
+              params={[
+                ["size", "optionnel : la taille en pixels, 56 par défaut"],
+              ]}
             >
               <Loader size={24} />
             </Demo>
@@ -375,12 +471,18 @@ export default function ComponentsTest() {
             <Demo
               name="Popup · tone danger"
               params={[
-                ['title', 'la question en titre'],
-                ['body', 'la phrase explicative'],
-                ['confirmLabel', 'le mot du bouton de confirmation'],
-                ['tone', 'optionnel : danger = bouton rouge, sinon bouton indigo'],
-                ['textArea', 'optionnel : true = ajoute une zone de texte'],
-                ['textAreaLabel', 'optionnel : le titre au-dessus de la zone de texte'],
+                ["title", "la question en titre"],
+                ["body", "la phrase explicative"],
+                ["confirmLabel", "le mot du bouton de confirmation"],
+                [
+                  "tone",
+                  "optionnel : danger = bouton rouge, sinon bouton indigo",
+                ],
+                ["textArea", "optionnel : true = ajoute une zone de texte"],
+                [
+                  "textAreaLabel",
+                  "optionnel : le titre au-dessus de la zone de texte",
+                ],
               ]}
             >
               <div className="demo_box">
@@ -408,13 +510,19 @@ export default function ComponentsTest() {
             <Demo
               name="Drawer"
               params={[
-                ['title', 'le titre du panneau'],
-                ['entre les balises', 'le contenu du panneau, écrit entre <Drawer> et </Drawer>'],
+                ["title", "le titre du panneau"],
+                [
+                  "entre les balises",
+                  "le contenu du panneau, écrit entre <Drawer> et </Drawer>",
+                ],
               ]}
             >
               <div className="demo_box">
                 <Drawer title="S’inscrire">
-                  <TextInput label="Nom complet" placeholder="Ex. Nadia Benali" />
+                  <TextInput
+                    label="Nom complet"
+                    placeholder="Ex. Nadia Benali"
+                  />
                   <PrimaryButton text="Confirmer" />
                 </Drawer>
               </div>
