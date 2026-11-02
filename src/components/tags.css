@@ -4,8 +4,8 @@
   justify-content: center;
   gap: 6px;
   box-sizing: border-box;
-  width: 108px;
-  height: 28px;
+  min-height: 28px;
+  padding: 4px 12px;
   border-radius: 999px;
   font-size: 12px;
   font-weight: 500;
@@ -16,42 +16,49 @@
   content: '';
   width: 8px;
   height: 8px;
+  flex: none;
   border-radius: 50%;
   background: currentColor;
 }
 
 .status_publie,
-.status_accepte {
-  background: #ece9fb;
-  color: #3b2fa8;
+.status_accepte,
+.status_confirmee,
+.status_actif {
+  background: var(--indigo-50);
+  color: var(--indigo-dark);
 }
 
-.status_encours {
-  background: #ffe3dc;
-  color: #8f2a10;
+.status_encours,
+.status_placeproposee {
+  background: var(--coral-100);
+  color: var(--coral-deep);
 }
 
 .status_brouillon,
 .status_enattente {
   background: var(--bg);
   color: var(--muted);
-  border: 1px dashed #bdb6a6;
+  border: 1px dashed var(--stone);
 }
 
 .status_complet {
-  background: #2e2490;
+  background: var(--indigo-deep);
   color: var(--white);
 }
 
-.status_termine {
-  background: #ece7de;
+.status_termine,
+.status_gratuit {
+  background: var(--line);
   color: var(--muted);
 }
 
 .status_annule,
-.status_refuse {
+.status_refuse,
+.status_suspendu,
+.status_rembourse {
   background: var(--white);
-  color: #8f2a10;
+  color: var(--coral-deep);
   border: 1px solid var(--coral);
 }
 
@@ -60,15 +67,15 @@
   align-items: center;
   padding: 4px 12px;
   border-radius: 999px;
-  background: #ece7de;
+  background: var(--line);
   color: var(--muted);
   font-size: 12px;
   font-weight: 500;
 }
 
 .chip_teal {
-  background: #e2f1f4;
-  color: #14606e;
+  background: var(--teal-50);
+  color: var(--teal-deep);
 }
 
 .avatar {
@@ -77,11 +84,18 @@
   flex: none;
   width: 36px;
   height: 36px;
+  overflow: hidden;
   border-radius: 50%;
-  background: #ece9fb;
+  background: var(--indigo-50);
   color: var(--indigo);
   font-size: 13px;
   font-weight: 600;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .avatar_48 {
@@ -105,7 +119,7 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: linear-gradient(150deg, #9fd3de, #e3f3f6);
+  background: linear-gradient(150deg, var(--teal-200), var(--teal-50));
   font-size: 17px;
   font-weight: 600;
   line-height: 1.1;
@@ -117,11 +131,11 @@
 }
 
 .datebadge_coral {
-  background: linear-gradient(150deg, #ffb59e, #ffe9e2);
+  background: linear-gradient(150deg, var(--coral-300), var(--coral-100));
 }
 
 .datebadge_indigo {
-  background: linear-gradient(150deg, #c5bef5, #efedfc);
+  background: linear-gradient(150deg, var(--indigo-300), var(--indigo-50));
 }
 
 .datebadge_72 {
@@ -138,7 +152,7 @@
 .bar {
   height: 10px;
   border-radius: 5px;
-  background: #ece7de;
+  background: var(--line);
 }
 
 .bar_fill {
@@ -156,7 +170,7 @@
 
 .ring_track {
   fill: none;
-  stroke: #ece7de;
+  stroke: var(--line);
   stroke-width: 8;
 }
 

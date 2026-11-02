@@ -10,6 +10,23 @@
   --indigo-deep: #2E2490;
   --indigo-50: #ECE9FB;
   --coral: #F0643C;
+  --line-strong: #DDD6C8;
+  --stone: #BDB6A6;
+  --coral-50: #FFF1EE;
+  --coral-100: #FFE3DC;
+  --coral-200: #F0C9C0;
+  --coral-300: #FFB59E;
+  --coral-dark: #B23A1B;
+  --coral-deep: #8F2A10;
+  --indigo-200: #D5CFF5;
+  --indigo-300: #C5BEF5;
+  --indigo-dark: #3B2FA8;
+  --teal-50: #E2F1F4;
+  --teal-200: #9FD3DE;
+  --teal-deep: #14606E;
+  --amber-50: #FFF7E0;
+  --amber-200: #F0DDA0;
+  --amber-deep: #7A5200;
 }
 
 body {

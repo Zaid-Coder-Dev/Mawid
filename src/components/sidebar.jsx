@@ -1,60 +1,74 @@
-import { NavLink } from 'react-router-dom';
-import { Home, Ticket, CalendarCheck, Users, CreditCard, User, LogOut } from 'lucide-react';
+import { NavLink, Link } from 'react-router-dom';
+import {
+  LayoutDashboard, CalendarDays, Ticket, User, Info,
+  CirclePlus, Users, ClipboardList, LogOut,FlaskConical 
+} from 'lucide-react';
+
 import logo from '../assets/logo-mark.png';
 import './sidebar.css';
 
-
-const ITEMS = {
+const links = {
   participant: [
-    { path: '', label: 'Tableau de bord', Icon: Home }, // path '' = the role's pade d'accueil 
-    { path: '/evenements', label: 'Événements', Icon: Ticket },
-    { path: '/reservations', label: 'Mes réservations', Icon: CalendarCheck },
-    { path: '/profil', label: 'Profil', Icon: User },
+    ['/participant/tableau-de-bord', 'Tableau de bord', LayoutDashboard],
+    ['/evenements', 'Événements', CalendarDays],
+    ['/participant/reservations', 'Mes réservations', Ticket],
+    ['/participant/profil', 'Profil', User],
+    ['/a-propos', 'À propos', Info],
   ],
+
   organisateur: [
-    { path: '', label: 'Tableau de bord', Icon: Home },
-    { path: '/evenements', label: 'Événements', Icon: Ticket },
-    { path: '/profil', label: 'Profil', Icon: User },
+    ['/organisateur/tableau-de-bord', 'Tableau de bord', LayoutDashboard],
+    ['/organisateur/evenements', 'Mes événements', CalendarDays],
+    ['/organisateur/evenements/nouveau', 'Créer un événement', CirclePlus],
+    ['/organisateur/profil', 'Profil', User],
+    ['/a-propos', 'À propos', Info],
   ],
+
   administrateur: [
-    { path: '', label: 'Tableau de bord', Icon: Home },
-    { path: '/evenements', label: 'Événements', Icon: Ticket },
-    { path: '/utilisateurs', label: 'Utilisateurs', Icon: Users },
-    { path: '/gestion', label: 'Gestion', Icon: CreditCard },
-    { path: '/profil', label: 'Profil', Icon: User },
+    ['/admin/tableau-de-bord', 'Tableau de bord', LayoutDashboard],
+    ['/admin/utilisateurs', 'Utilisateurs', Users],
+    ['/evenements', 'Événements', CalendarDays],
+    ['/admin/gestion/paiements', 'Gestion', ClipboardList],
+    ['/admin/profil', 'Profil', User],
+    ['/a-propos', 'À propos', Info],
   ],
 };
 
 export default function Sidebar(props) {
-  let role=props.role 
+
 
   return (
-    <nav className="sidebar" aria-label="Navigation principale">
+    <nav className="sidebar">
+
       <div className="sidebar_logo">
         <img src={logo} alt="" width="36" height="36" />
         <span className="sidebar_label">Mawid</span>
       </div>
 
-      {ITEMS[role].map(({ path, label, Icon }) => (
+      {links[props.role]?.map(([path, label, Icon]) => (
         <NavLink
-          key={label}
-          to={`/${role}${path}`}
-
-          className="sidebar_item">
-          <Icon size={24} strokeWidth={1.6} />
+          key={path}
+          to={path}
+          className={({ isActive }) =>
+            isActive ? 'sidebar_item active' : 'sidebar_item'
+          }
+        >
+          <Icon size={22} strokeWidth={1.7} />
           <span className="sidebar_label">{label}</span>
         </NavLink>
       ))}
-      <NavLink
-          key={'test'}
-          to={`/test`}
-    
-          className="sidebar_item"
-        >Components</NavLink>
-      <NavLink to="/connexion" className="sidebar_item sidebar_logout">
-        <LogOut size={24} />
+
+      <Link to="/test" className="sidebar_item sidebar_logout">
+        <FlaskConical size={22} strokeWidth={1.7}/>
+        <span className="sidebar_label">Components</span>
+      </Link>
+      
+      <Link to="/connexion" className="sidebar_item sidebar_logout">
+        <LogOut size={22} strokeWidth={1.7} />
         <span className="sidebar_label">Se déconnecter</span>
-      </NavLink>
+      </Link>
+
+
     </nav>
   );
 }

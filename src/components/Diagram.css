@@ -12,7 +12,7 @@
 
 .donut_track {
   fill: none;
-  stroke: #ece7de;
+  stroke: var(--line);
   stroke-width: 8;
 }
 
@@ -30,11 +30,15 @@
 }
 
 .donut_2 {
-  stroke: #bdb6a6;
+  stroke: var(--stone);
 }
 
 .donut_3 {
-  stroke: #9fd3de;
+  stroke: var(--teal-200);
+}
+
+.donut_4 {
+  stroke: var(--teal-deep);
 }
 
 .donut_label {

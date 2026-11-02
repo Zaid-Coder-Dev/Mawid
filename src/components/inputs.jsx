@@ -59,7 +59,6 @@ export function SearchInput(props) {
     <input
       className="input input_search"
       type="search"
-      aria-label={props.placeholder}
       placeholder={props.placeholder}
     />
   );
@@ -108,7 +107,7 @@ export function Radio(props) {
 export function Switch(props) {
   return (
     <label className="check">
-      <input className="switch" type="checkbox" role="switch" />
+      <input className="switch" type="checkbox" />
       {props.label}
     </label>
   );
@@ -119,7 +118,7 @@ export function FileInput(props) {
     <div className="field">
       {props.label}
       <label className="filedrop">
-        <input className="filedrop_input" type="file" aria-label={props.label} />
+        <input className="filedrop_input" type="file" />
         Glissez un fichier ou <b>parcourez</b>
       </label>
     </div>

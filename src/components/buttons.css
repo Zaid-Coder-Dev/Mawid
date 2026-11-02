@@ -20,14 +20,13 @@
 }
 
 .btn_primary:hover {
-  background: var(--deep, #2e2490);
+  background: var(--indigo-deep);
 }
 
-/* the border is an inset shadow so all buttons keep the same size */
 .btn_secondary {
   background: var(--white);
   color: var(--ink);
-  box-shadow: inset 0 0 0 1px #ddd6c8;
+  box-shadow: inset 0 0 0 1px var(--line-strong);
 }
 
 .btn_secondary:hover {
@@ -35,12 +34,12 @@
 }
 
 .btn_danger {
-  background: #b23a1b;
+  background: var(--coral-dark);
   color: var(--white);
 }
 
 .btn_danger:hover {
-  background: #8f2a10;
+  background: var(--coral-deep);
 }
 
 .iconbtn {

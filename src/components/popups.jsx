@@ -6,7 +6,7 @@ import './popups.css';
 export function Popup(props) {
   return (
     <div className="dialog_overlay">
-      <div className="dialog" role="alertdialog" aria-modal="true" aria-label={props.title}>
+      <div className="dialog">
         <h2 className="dialog_title">{props.title}</h2>
         <p className="dialog_body">{props.body}</p>
 
@@ -30,7 +30,7 @@ export function Drawer(props) {
   return (
     <>
       <div className="drawer_scrim" />
-      <aside className="drawer" role="dialog" aria-modal="true" aria-label={props.title}>
+      <aside className="drawer">
         <div className="drawer_head">
           <h2 className="drawer_title">{props.title}</h2>
           <IconButton icon={<X size={18} />} label="Fermer" />

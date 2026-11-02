@@ -14,7 +14,7 @@ export function DangerButton(props) {
 
 export function IconButton(props) {
   return (
-    <button className="iconbtn" aria-label={props.label}>
+    <button className="iconbtn" title={props.label}>
       {props.icon}
     </button>
   );

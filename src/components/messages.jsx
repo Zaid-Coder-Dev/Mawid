@@ -2,7 +2,7 @@ import './messages.css';
 
 export function Banner(props) {
   return (
-    <div className={'banner banner_' + props.tone} role="alert">
+    <div className={'banner banner_' + props.tone}>
       <span>{props.text}</span>
       {props.action}
     </div>
@@ -21,18 +21,9 @@ export function EmptyState(props) {
 
 export function Toast(props) {
   return (
-    <div className="toast" role="status">
+    <div className="toast">
       {props.message}
     </div>
   );
 }
 
-export function Skeleton() {
-  return (
-    <div className="skeleton" role="status" aria-label="Chargement">
-      <span className="skeleton_line" />
-      <span className="skeleton_line" />
-      <span className="skeleton_line" />
-    </div>
-  );
-}

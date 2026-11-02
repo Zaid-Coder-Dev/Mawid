@@ -1,4 +1,4 @@
-import { Bell } from "lucide-react";
+import { MoreHorizontal } from "lucide-react";
 import AppShell from "../layouts/AppShell";
 import {
   PrimaryButton,
@@ -32,11 +32,11 @@ import {
   ProgressRing,
 } from "../components/tags";
 import { DonutChart } from "../components/Diagram";
-import { Banner, EmptyState, Toast, Skeleton } from "../components/messages";
+import { Banner, EmptyState, Toast } from "../components/messages";
 import { Popup, Drawer } from "../components/popups";
 import { Loader } from "../components/loader";
 import "./ComponentsTest.css";
-
+import DescriptionList from '../components/descriptions'
 function Demo(props) {
   return (
     <div className="demo_item">
@@ -88,7 +88,28 @@ export default function ComponentsTest() {
           </Demo>
         </section>
 
-
+        <section className="demo_section">
+          <h2>DescriptionList</h2>
+          <Demo
+            name="DescriptionList"
+            params={[
+              [
+                "items",
+                "une liste de { label, value }, affichée sur 3 colonnes",
+              ],
+            ]}
+          >
+            <Card>
+              <DescriptionList
+                items={[
+                  { label: "Date", value: "12 – 15 avril 2025" },
+                  { label: "Lieu", value: "Centre de conférences, Rabat" },
+                  { label: "Prix", value: "50 MAD" },
+                ]}
+              />
+            </Card>
+          </Demo>
+        </section>
         <section className="demo_section">
           <h2>Carte blanche (cards)</h2>
           <div className="demo_row">
@@ -130,11 +151,14 @@ export default function ComponentsTest() {
             <Demo
               name="IconButton"
               params={[
-                ["icon", "l’icône, ex. icon={<Bell size={18} />}"],
+                ["icon", "l’icône, ex. icon={<MoreHorizontal size={18} />}"],
                 ["label", "texte lu par les lecteurs d’écran"],
               ]}
             >
-              <IconButton icon={<Bell size={18} />} label="Notifications" />
+              <IconButton
+                icon={<MoreHorizontal size={18} />}
+                label="Plus d’options"
+              />
             </Demo>
           </div>
         </section>
@@ -263,7 +287,7 @@ export default function ComponentsTest() {
               name="Switch"
               params={[["label", "le texte à côté de l’interrupteur"]]}
             >
-              <Switch label="Notifications par e-mail" />
+              <Switch label="Valider chaque inscription" />
             </Demo>
           </div>
         </section>
@@ -276,7 +300,7 @@ export default function ComponentsTest() {
               params={[
                 [
                   "status",
-                  "publie, encours, brouillon, complet, termine, annule, accepte, enattente ou refuse",
+                  "publie, encours, brouillon, complet, termine, annule, accepte, enattente, refuse, confirmee, gratuit, rembourse, actif, suspendu ou placeproposee",
                 ],
               ]}
             >
@@ -305,6 +329,24 @@ export default function ComponentsTest() {
             </Demo>
             <Demo name="StatusTag · refuse">
               <StatusTag status="refuse" />
+            </Demo>
+            <Demo name="StatusTag · confirmee">
+              <StatusTag status="confirmee" />
+            </Demo>
+            <Demo name="StatusTag · gratuit">
+              <StatusTag status="gratuit" />
+            </Demo>
+            <Demo name="StatusTag · rembourse">
+              <StatusTag status="rembourse" />
+            </Demo>
+            <Demo name="StatusTag · actif">
+              <StatusTag status="actif" />
+            </Demo>
+            <Demo name="StatusTag · suspendu">
+              <StatusTag status="suspendu" />
+            </Demo>
+            <Demo name="StatusTag · placeproposee">
+              <StatusTag status="placeproposee" />
             </Demo>
           </div>
         </section>
@@ -454,15 +496,7 @@ export default function ComponentsTest() {
               params={[["message", "le texte de la notification"]]}
             >
               <div className="demo_row">
-                <Toast message="Inscription acceptée" />
-              </div>
-            </Demo>
-            <Demo
-              name="Skeleton"
-              params={[["aucun", "ce composant n’a pas de paramètre"]]}
-            >
-              <div className="demo_narrow">
-                <Skeleton />
+                <Toast message="Événement créé avec succès" />
               </div>
             </Demo>
           </div>
