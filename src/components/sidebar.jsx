@@ -9,6 +9,8 @@ import {
   Users,
   ClipboardList,
   LogOut,
+  LogIn,
+  UserPlus,
   FlaskConical,
 } from 'lucide-react';
 
@@ -16,6 +18,12 @@ import logo from '../assets/logo-mark.png';
 import './sidebar.css';
 
 const links = {
+  visiteur: [
+    { path: '/evenements', label: 'Événements', Icon: CalendarDays },
+    { path: '/a-propos', label: 'À propos', Icon: Info },
+    { path: '/connexion', label: 'Connexion', Icon: LogIn },
+    { path: '/creer-un-compte', label: 'Créer un compte', Icon: UserPlus },
+  ],
   participant: [
     { path: '/participant/tableau-de-bord', label: 'Tableau de bord', Icon: LayoutDashboard },
     { path: '/evenements', label: 'Événements', Icon: CalendarDays },
@@ -41,6 +49,7 @@ const links = {
 };
 
 export default function Sidebar(props) {
+  const role = props.role || 'visiteur';
 
   return (
     <nav className="sidebar">
@@ -50,7 +59,7 @@ export default function Sidebar(props) {
         <span className="sidebar_label">Mawid</span>
       </div>
 
-      {links[props.role].map((link) => (
+      {links[role].map((link) => (
         <NavLink
           key={link.path}
           to={link.path}
@@ -66,10 +75,12 @@ export default function Sidebar(props) {
         <span className="sidebar_label">Components</span>
       </Link>
       
-      <Link to="/connexion" className="sidebar_item">
-        <LogOut size={22} strokeWidth={1.7} />
-        <span className="sidebar_label">Se déconnecter</span>
-      </Link>
+      {props.role && (
+        <Link to="/connexion" className="sidebar_item">
+          <LogOut size={22} strokeWidth={1.7} />
+          <span className="sidebar_label">Se déconnecter</span>
+        </Link>
+      )}
 
     </nav>
   );

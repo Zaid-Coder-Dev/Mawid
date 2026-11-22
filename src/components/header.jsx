@@ -4,10 +4,11 @@ const USERS = {
   participant: { initials: 'PA', name: 'Participant' },
   organisateur: { initials: 'OR', name: 'Organisateur' },
   administrateur: { initials: 'AD', name: 'Administrateur' },
+  visiteur: { initials: 'VI', name: 'Visiteur' },
 };
 
 export default function Header(props) {
-  const user = USERS[props.role];
+  const user = USERS[props.role || 'visiteur'];
 
   return (
     <header className="header">

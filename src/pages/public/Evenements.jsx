@@ -1,9 +1,9 @@
-import PublicLayout from '../../layouts/PublicLayout';
+import AppShell from '../../layouts/AppShell';
 
 export default function Evenements() {
   return (
-    <PublicLayout>
+    <AppShell>
       <h1>Liste des événements (même page pour le visiteur, le participant et l'administrateur)</h1>
-    </PublicLayout>
+    </AppShell>
   );
 }

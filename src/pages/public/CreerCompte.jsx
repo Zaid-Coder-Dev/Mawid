@@ -1,9 +1,9 @@
-import PublicLayout from '../../layouts/PublicLayout';
+import AppShell from '../../layouts/AppShell';
 
 export default function CreerCompte() {
   return (
-    <PublicLayout>
+    <AppShell>
       <h1>Créer un compte (page publique)</h1>
-    </PublicLayout>
+    </AppShell>
   );
 }
