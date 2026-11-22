@@ -1,0 +1,775 @@
+{
+  "utilisateurs": [
+    {
+      "id": 1,
+      "prenom": "Amine",
+      "nom": "Berrada",
+      "email": "amine.berrada@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 12 34 56 78",
+      "ville": "Tétouan",
+      "photo": "",
+      "role": "participant",
+      "statut": "actif",
+      "dateInscription": "2025-03-10"
+    },
+    {
+      "id": 2,
+      "prenom": "Sophie",
+      "nom": "Martin",
+      "email": "sophie.martin@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 11 22 33 44",
+      "ville": "Rabat",
+      "photo": "",
+      "role": "participant",
+      "statut": "actif",
+      "dateInscription": "2025-09-12"
+    },
+    {
+      "id": 3,
+      "prenom": "Karim",
+      "nom": "Idrissi",
+      "email": "karim.idrissi@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 22 33 44 55",
+      "ville": "Casablanca",
+      "photo": "",
+      "role": "participant",
+      "statut": "actif",
+      "dateInscription": "2025-10-02"
+    },
+    {
+      "id": 4,
+      "prenom": "Nadia",
+      "nom": "Benali",
+      "email": "nadia.benali@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 33 44 55 66",
+      "ville": "Fès",
+      "photo": "",
+      "role": "participant",
+      "statut": "suspendu",
+      "dateInscription": "2025-10-15"
+    },
+    {
+      "id": 5,
+      "prenom": "Youssef",
+      "nom": "Amrani",
+      "email": "youssef.amrani@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 44 55 66 77",
+      "ville": "Tanger",
+      "photo": "",
+      "role": "participant",
+      "statut": "actif",
+      "dateInscription": "2025-11-03"
+    },
+    {
+      "id": 6,
+      "prenom": "Imane",
+      "nom": "Berrada",
+      "email": "imane.berrada@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 55 66 77 88",
+      "ville": "Rabat",
+      "photo": "",
+      "role": "organisateur",
+      "statut": "actif",
+      "dateInscription": "2025-06-20"
+    },
+    {
+      "id": 7,
+      "prenom": "Amina",
+      "nom": "El Ouahabi",
+      "email": "amina.elouahabi@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 66 77 88 99",
+      "ville": "Tétouan",
+      "photo": "",
+      "role": "participant",
+      "statut": "actif",
+      "dateInscription": "2026-01-08"
+    },
+    {
+      "id": 8,
+      "prenom": "Thomas",
+      "nom": "Leroy",
+      "email": "thomas.leroy@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 77 88 99 00",
+      "ville": "Casablanca",
+      "photo": "",
+      "role": "organisateur",
+      "statut": "actif",
+      "dateInscription": "2025-05-14"
+    },
+    {
+      "id": 9,
+      "prenom": "Hamza",
+      "nom": "Khalil",
+      "email": "hamza.khalil@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 88 99 00 11",
+      "ville": "Rabat",
+      "photo": "",
+      "role": "participant",
+      "statut": "actif",
+      "dateInscription": "2026-02-19"
+    },
+    {
+      "id": 10,
+      "prenom": "Yassine",
+      "nom": "Alaoui",
+      "email": "yassine.alaoui@exemple.com",
+      "motDePasse": "mawid123",
+      "telephone": "+212 6 99 00 11 22",
+      "ville": "Rabat",
+      "photo": "",
+      "role": "administrateur",
+      "statut": "actif",
+      "dateInscription": "2025-01-05"
+    }
+  ],
+  "evenements": [
+    {
+      "id": 1,
+      "titre": "Atelier Développement Web",
+      "description": "Un atelier pratique pour apprendre à structurer une page web avec HTML et CSS.",
+      "categorie": "Atelier",
+      "dateDebut": "2026-12-12T09:00",
+      "dateFin": "2026-12-12T17:00",
+      "adresse": "ISMO Tétouan, Salle 3",
+      "ville": "Tétouan",
+      "capaciteMax": 12,
+      "prix": 100,
+      "image": "/images/evenements/atelier.svg",
+      "statut": "publie",
+      "validationManuelle": false,
+      "organisateurId": 8
+    },
+    {
+      "id": 2,
+      "titre": "Conférence sur l’innovation",
+      "description": "Une conférence dédiée aux dernières tendances de l’innovation et de la technologie. Rejoignez des experts du domaine, échangez et développez votre réseau.",
+      "categorie": "Conférence",
+      "dateDebut": "2026-12-18T09:00",
+      "dateFin": "2026-12-19T17:00",
+      "adresse": "Centre de conférences, Rabat",
+      "ville": "Rabat",
+      "capaciteMax": 40,
+      "prix": 50,
+      "image": "/images/evenements/conference.svg",
+      "statut": "publie",
+      "validationManuelle": false,
+      "organisateurId": 8
+    },
+    {
+      "id": 3,
+      "titre": "Concert de jazz",
+      "description": "Une soirée jazz avec trois groupes de la scène marocaine.",
+      "categorie": "Concert",
+      "dateDebut": "2026-12-20T20:00",
+      "dateFin": "2026-12-20T23:00",
+      "adresse": "Théâtre Mohammed V, Rabat",
+      "ville": "Rabat",
+      "capaciteMax": 4,
+      "prix": 100,
+      "image": "/images/evenements/concert.svg",
+      "statut": "complet",
+      "validationManuelle": false,
+      "organisateurId": 6
+    },
+    {
+      "id": 4,
+      "titre": "Salon de l’emploi",
+      "description": "Rencontrez les entreprises qui recrutent et déposez votre CV.",
+      "categorie": "Salon",
+      "dateDebut": "2026-10-22T10:00",
+      "dateFin": "2026-10-22T17:00",
+      "adresse": "Parc des expositions, Casablanca",
+      "ville": "Casablanca",
+      "capaciteMax": 20,
+      "prix": 0,
+      "image": "/images/evenements/salon.svg",
+      "statut": "termine",
+      "validationManuelle": false,
+      "organisateurId": 8
+    },
+    {
+      "id": 5,
+      "titre": "Random sports",
+      "description": "Une journée de sports collectifs ouverte à tous les niveaux.",
+      "categorie": "Sport",
+      "dateDebut": "2026-11-16T10:00",
+      "dateFin": "2026-11-16T18:00",
+      "adresse": "Complexe sportif, Casablanca",
+      "ville": "Casablanca",
+      "capaciteMax": 20,
+      "prix": 75,
+      "image": "/images/evenements/sport.svg",
+      "statut": "encours",
+      "validationManuelle": false,
+      "organisateurId": 6
+    },
+    {
+      "id": 6,
+      "titre": "Formation en marketing digital",
+      "description": "Une formation de deux jours pour comprendre les bases du marketing sur les réseaux.",
+      "categorie": "Formation",
+      "dateDebut": "2026-12-05T09:00",
+      "dateFin": "2026-12-06T17:00",
+      "adresse": "Centre de formation, Rabat",
+      "ville": "Rabat",
+      "capaciteMax": 3,
+      "prix": 0,
+      "image": "/images/evenements/formation.svg",
+      "statut": "complet",
+      "validationManuelle": false,
+      "organisateurId": 8
+    },
+    {
+      "id": 7,
+      "titre": "Atelier Design Thinking",
+      "description": "Apprenez à résoudre un problème avec la méthode du design thinking.",
+      "categorie": "Atelier",
+      "dateDebut": "2027-01-10T09:30",
+      "dateFin": "2027-01-10T16:30",
+      "adresse": "Espace Cowork, Rabat",
+      "ville": "Rabat",
+      "capaciteMax": 20,
+      "prix": 50,
+      "image": "/images/evenements/atelier.svg",
+      "statut": "publie",
+      "validationManuelle": true,
+      "organisateurId": 6
+    },
+    {
+      "id": 8,
+      "titre": "Workshop Design UI/UX",
+      "description": "Un workshop pour concevoir une interface claire, de la maquette au prototype.",
+      "categorie": "Atelier",
+      "dateDebut": "2027-01-24T09:00",
+      "dateFin": "2027-01-24T17:00",
+      "adresse": "ISMO Tétouan, Salle 1",
+      "ville": "Tétouan",
+      "capaciteMax": 25,
+      "prix": 0,
+      "image": "/images/evenements/atelier.svg",
+      "statut": "publie",
+      "validationManuelle": false,
+      "organisateurId": 6
+    },
+    {
+      "id": 9,
+      "titre": "Atelier Git et GitHub",
+      "description": "Les bases de Git et de GitHub pour travailler en équipe.",
+      "categorie": "Atelier",
+      "dateDebut": "2026-09-05T10:00",
+      "dateFin": "2026-09-05T12:00",
+      "adresse": "ISMO Tétouan, Salle 2",
+      "ville": "Tétouan",
+      "capaciteMax": 25,
+      "prix": 0,
+      "image": "/images/evenements/atelier.svg",
+      "statut": "termine",
+      "validationManuelle": false,
+      "organisateurId": 8
+    },
+    {
+      "id": 10,
+      "titre": "Festival de musique",
+      "description": "Un festival de musique en plein air, annulé à cause de la météo.",
+      "categorie": "Concert",
+      "dateDebut": "2026-11-28T18:00",
+      "dateFin": "2026-11-28T23:00",
+      "adresse": "Corniche, Casablanca",
+      "ville": "Casablanca",
+      "capaciteMax": 150,
+      "prix": 60,
+      "image": "/images/evenements/concert.svg",
+      "statut": "annule",
+      "validationManuelle": false,
+      "organisateurId": 6
+    },
+    {
+      "id": 11,
+      "titre": "Conférence sur l’intelligence artificielle",
+      "description": "Une conférence en préparation sur l’IA et ses usages au quotidien.",
+      "categorie": "Conférence",
+      "dateDebut": "2027-02-14T09:00",
+      "dateFin": "2027-02-14T17:00",
+      "adresse": "Amphi principal, Tétouan",
+      "ville": "Tétouan",
+      "capaciteMax": 100,
+      "prix": 30,
+      "image": "/images/evenements/conference.svg",
+      "statut": "brouillon",
+      "validationManuelle": false,
+      "organisateurId": 8
+    }
+  ],
+  "intervenants": [
+    {
+      "id": 1,
+      "nom": "Idrissi",
+      "prenom": "Salma",
+      "fonction": "Experte en IA",
+      "biographie": "Docteure en informatique, elle travaille sur l’IA appliquée à la santé."
+    },
+    {
+      "id": 2,
+      "nom": "Tazi",
+      "prenom": "Omar",
+      "fonction": "CEO et fondateur",
+      "biographie": "Fondateur de deux start-ups marocaines."
+    },
+    {
+      "id": 3,
+      "nom": "Haddad",
+      "prenom": "Leila",
+      "fonction": "Designer UX",
+      "biographie": ""
+    },
+    {
+      "id": 4,
+      "nom": "Chraibi",
+      "prenom": "Hamid",
+      "fonction": "Développeur web",
+      "biographie": "Formateur et développeur depuis dix ans."
+    }
+  ],
+  "sessions": [
+    {
+      "id": 1,
+      "evenementId": 2,
+      "titre": "Ouverture et keynote",
+      "description": "Mot d’accueil et conférence d’ouverture.",
+      "date": "2026-12-18",
+      "heureDebut": "09:00",
+      "heureFin": "10:00",
+      "salle": "Amphi A",
+      "intervenantId": 1
+    },
+    {
+      "id": 2,
+      "evenementId": 2,
+      "titre": "Table ronde : l’IA au quotidien",
+      "description": "Discussion avec trois invités.",
+      "date": "2026-12-18",
+      "heureDebut": "10:30",
+      "heureFin": "12:00",
+      "salle": "Salle 2",
+      "intervenantId": 2
+    },
+    {
+      "id": 3,
+      "evenementId": 2,
+      "titre": "Atelier : innover en équipe",
+      "description": "Un atelier en petits groupes.",
+      "date": "2026-12-18",
+      "heureDebut": "14:00",
+      "heureFin": "16:00",
+      "salle": "Salle 3",
+      "intervenantId": 3
+    },
+    {
+      "id": 4,
+      "evenementId": 1,
+      "titre": "Accueil et installation",
+      "description": "",
+      "date": "2026-12-12",
+      "heureDebut": "09:00",
+      "heureFin": "09:30",
+      "salle": "Salle 3",
+      "intervenantId": 4
+    },
+    {
+      "id": 5,
+      "evenementId": 1,
+      "titre": "Structurer une page web",
+      "description": "Balises HTML et mise en page.",
+      "date": "2026-12-12",
+      "heureDebut": "10:15",
+      "heureFin": "12:00",
+      "salle": "Salle 3",
+      "intervenantId": 4
+    },
+    {
+      "id": 6,
+      "evenementId": 9,
+      "titre": "Les bases de Git",
+      "description": "Commit, branches et pull request.",
+      "date": "2026-09-05",
+      "heureDebut": "10:00",
+      "heureFin": "12:00",
+      "salle": "Salle 2",
+      "intervenantId": 4
+    }
+  ],
+  "inscriptions": [
+    {
+      "id": 1,
+      "numeroReservation": "RES-0412",
+      "participantId": 1,
+      "evenementId": 1,
+      "dateInscription": "2026-11-02",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 2,
+      "numeroReservation": "RES-0413",
+      "participantId": 2,
+      "evenementId": 1,
+      "dateInscription": "2026-11-02",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 3,
+      "numeroReservation": "RES-0414",
+      "participantId": 3,
+      "evenementId": 2,
+      "dateInscription": "2026-11-03",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 4,
+      "numeroReservation": "RES-0388",
+      "participantId": 5,
+      "evenementId": 2,
+      "dateInscription": "2026-11-04",
+      "statut": "enattente",
+      "presence": ""
+    },
+    {
+      "id": 5,
+      "numeroReservation": "RES-0420",
+      "participantId": 3,
+      "evenementId": 7,
+      "dateInscription": "2026-11-07",
+      "statut": "enattente",
+      "presence": ""
+    },
+    {
+      "id": 6,
+      "numeroReservation": "RES-0421",
+      "participantId": 7,
+      "evenementId": 7,
+      "dateInscription": "2026-11-08",
+      "statut": "enattente",
+      "presence": ""
+    },
+    {
+      "id": 7,
+      "numeroReservation": "RES-0430",
+      "participantId": 4,
+      "evenementId": 7,
+      "dateInscription": "2026-11-09",
+      "statut": "refuse",
+      "presence": ""
+    },
+    {
+      "id": 8,
+      "numeroReservation": "RES-0501",
+      "participantId": 2,
+      "evenementId": 3,
+      "dateInscription": "2026-10-20",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 9,
+      "numeroReservation": "RES-0502",
+      "participantId": 3,
+      "evenementId": 3,
+      "dateInscription": "2026-10-20",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 10,
+      "numeroReservation": "RES-0503",
+      "participantId": 5,
+      "evenementId": 3,
+      "dateInscription": "2026-10-21",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 11,
+      "numeroReservation": "RES-0504",
+      "participantId": 7,
+      "evenementId": 3,
+      "dateInscription": "2026-10-22",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 12,
+      "numeroReservation": "RES-0505",
+      "participantId": 1,
+      "evenementId": 3,
+      "dateInscription": "2026-10-25",
+      "statut": "placeproposee",
+      "presence": ""
+    },
+    {
+      "id": 13,
+      "numeroReservation": "RES-0601",
+      "participantId": 2,
+      "evenementId": 6,
+      "dateInscription": "2026-11-01",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 14,
+      "numeroReservation": "RES-0602",
+      "participantId": 3,
+      "evenementId": 6,
+      "dateInscription": "2026-11-01",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 15,
+      "numeroReservation": "RES-0603",
+      "participantId": 5,
+      "evenementId": 6,
+      "dateInscription": "2026-11-02",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 16,
+      "numeroReservation": "RES-0604",
+      "participantId": 7,
+      "evenementId": 6,
+      "dateInscription": "2026-11-03",
+      "statut": "listeattente",
+      "presence": ""
+    },
+    {
+      "id": 17,
+      "numeroReservation": "RES-0605",
+      "participantId": 9,
+      "evenementId": 6,
+      "dateInscription": "2026-11-04",
+      "statut": "listeattente",
+      "presence": ""
+    },
+    {
+      "id": 18,
+      "numeroReservation": "RES-0606",
+      "participantId": 1,
+      "evenementId": 6,
+      "dateInscription": "2026-11-05",
+      "statut": "listeattente",
+      "presence": ""
+    },
+    {
+      "id": 19,
+      "numeroReservation": "RES-0301",
+      "participantId": 2,
+      "evenementId": 4,
+      "dateInscription": "2026-10-10",
+      "statut": "confirmee",
+      "presence": "present"
+    },
+    {
+      "id": 20,
+      "numeroReservation": "RES-0302",
+      "participantId": 3,
+      "evenementId": 4,
+      "dateInscription": "2026-10-10",
+      "statut": "confirmee",
+      "presence": "absent"
+    },
+    {
+      "id": 21,
+      "numeroReservation": "RES-0303",
+      "participantId": 5,
+      "evenementId": 4,
+      "dateInscription": "2026-10-11",
+      "statut": "confirmee",
+      "presence": "present"
+    },
+    {
+      "id": 22,
+      "numeroReservation": "RES-0701",
+      "participantId": 2,
+      "evenementId": 5,
+      "dateInscription": "2026-11-08",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 23,
+      "numeroReservation": "RES-0702",
+      "participantId": 5,
+      "evenementId": 5,
+      "dateInscription": "2026-11-09",
+      "statut": "confirmee",
+      "presence": ""
+    },
+    {
+      "id": 24,
+      "numeroReservation": "RES-0344",
+      "participantId": 1,
+      "evenementId": 9,
+      "dateInscription": "2026-08-28",
+      "statut": "confirmee",
+      "presence": "present"
+    },
+    {
+      "id": 25,
+      "numeroReservation": "RES-0345",
+      "participantId": 2,
+      "evenementId": 9,
+      "dateInscription": "2026-08-28",
+      "statut": "confirmee",
+      "presence": "present"
+    },
+    {
+      "id": 26,
+      "numeroReservation": "RES-0346",
+      "participantId": 3,
+      "evenementId": 9,
+      "dateInscription": "2026-08-29",
+      "statut": "confirmee",
+      "presence": "present"
+    },
+    {
+      "id": 27,
+      "numeroReservation": "RES-0801",
+      "participantId": 5,
+      "evenementId": 10,
+      "dateInscription": "2026-10-30",
+      "statut": "annule",
+      "presence": ""
+    }
+  ],
+  "paiements": [
+    {
+      "id": 1,
+      "inscriptionId": 1,
+      "montant": 100,
+      "date": "2026-11-02",
+      "mode": "Carte bancaire",
+      "statut": "accepte"
+    },
+    {
+      "id": 2,
+      "inscriptionId": 2,
+      "montant": 100,
+      "date": "2026-11-02",
+      "mode": "Carte bancaire",
+      "statut": "accepte"
+    },
+    {
+      "id": 3,
+      "inscriptionId": 3,
+      "montant": 50,
+      "date": "2026-11-03",
+      "mode": "Carte bancaire",
+      "statut": "accepte"
+    },
+    {
+      "id": 4,
+      "inscriptionId": 4,
+      "montant": 50,
+      "date": "2026-11-04",
+      "mode": "Paiement mobile",
+      "statut": "enattente"
+    },
+    {
+      "id": 5,
+      "inscriptionId": 8,
+      "montant": 100,
+      "date": "2026-10-20",
+      "mode": "Virement",
+      "statut": "accepte"
+    },
+    {
+      "id": 6,
+      "inscriptionId": 9,
+      "montant": 100,
+      "date": "2026-10-20",
+      "mode": "Carte bancaire",
+      "statut": "accepte"
+    },
+    {
+      "id": 7,
+      "inscriptionId": 10,
+      "montant": 100,
+      "date": "2026-10-21",
+      "mode": "Paiement mobile",
+      "statut": "accepte"
+    },
+    {
+      "id": 8,
+      "inscriptionId": 11,
+      "montant": 100,
+      "date": "2026-10-22",
+      "mode": "Carte bancaire",
+      "statut": "accepte"
+    },
+    {
+      "id": 9,
+      "inscriptionId": 22,
+      "montant": 75,
+      "date": "2026-11-08",
+      "mode": "Carte bancaire",
+      "statut": "accepte"
+    },
+    {
+      "id": 10,
+      "inscriptionId": 23,
+      "montant": 75,
+      "date": "2026-11-09",
+      "mode": "Paiement mobile",
+      "statut": "refuse"
+    },
+    {
+      "id": 11,
+      "inscriptionId": 27,
+      "montant": 60,
+      "date": "2026-10-30",
+      "mode": "Carte bancaire",
+      "statut": "rembourse"
+    }
+  ],
+  "evaluations": [
+    {
+      "id": 1,
+      "participantId": 2,
+      "evenementId": 4,
+      "note": 3,
+      "commentaire": "Trop de monde, peu de temps pour discuter."
+    },
+    {
+      "id": 2,
+      "participantId": 5,
+      "evenementId": 4,
+      "note": 4,
+      "commentaire": "Bonne organisation."
+    },
+    {
+      "id": 3,
+      "participantId": 2,
+      "evenementId": 9,
+      "note": 5,
+      "commentaire": "Très bon atelier, clair et concret."
+    },
+    {
+      "id": 4,
+      "participantId": 3,
+      "evenementId": 9,
+      "note": 4,
+      "commentaire": ""
+    }
+  ]
+}

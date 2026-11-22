@@ -16,6 +16,7 @@ const labels = {
   actif: "Actif",
   suspendu: "Suspendu",
   placeproposee: "Place proposée",
+  listeattente: "Liste d’attente",
 };
 
 export function StatusTag(props) {
@@ -38,39 +39,10 @@ export function Avatar(props) {
 
 export function DateBadge(props) {
   const size = props.size || 48;
-  const tone = props.tone || 'teal';
-
   return (
-    <div className={'datebadge datebadge_' + size + ' datebadge_' + tone}>
+    <div className={'datebadge datebadge_' + size + (props.tone ? ' datebadge_' + props.tone : '')}>
       {props.day}
       <span>{props.month}</span>
-    </div>
-  );
-}
-
-export function ProgressBar(props) {
-  return (
-    <div className="bar">
-      <div className="bar_fill" style={{ width: props.value + '%' }} />
-    </div>
-  );
-}
-
-export function ProgressRing(props) {
-  return (
-    <div className="ring">
-      <svg width="76" height="76" viewBox="0 0 76 76">
-        <circle className="ring_track" cx="38" cy="38" r="31" />
-        <circle
-          className="ring_value"
-          cx="38"
-          cy="38"
-          r="31"
-          transform="rotate(-90 38 38)"
-          strokeDasharray={props.value * 1.95 + ' 195'}
-        />
-      </svg>
-      <b className="ring_label">{props.label}</b>
     </div>
   );
 }

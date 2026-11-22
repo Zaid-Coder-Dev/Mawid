@@ -11,20 +11,21 @@
 
 .banner_error {
   background: var(--coral-50);
-  border-color: var(--coral-200);
-  color: var(--coral-deep);
+  border-color: var(--coral);
+  color: var(--ink);
 }
 
 .banner_info {
   background: var(--indigo-50);
-  border-color: var(--indigo-200);
-  color: var(--indigo-dark);
+  border-color: var(--indigo);
+  color: var(--indigo-deep);
 }
 
 .banner_warning {
-  background: var(--amber-50);
-  border-color: var(--amber-200);
-  color: var(--amber-deep);
+  background: var(--coral-50);
+  border-style: dashed;
+  border-color: var(--coral);
+  color: var(--ink);
 }
 
 .empty {
@@ -33,7 +34,7 @@
   align-items: center;
   gap: 8px;
   padding: 36px;
-  border: 1.5px dashed var(--line-strong);
+  border: 1.5px dashed var(--line);
   border-radius: 20px;
   text-align: center;
 }

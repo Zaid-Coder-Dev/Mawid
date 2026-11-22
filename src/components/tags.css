@@ -26,20 +26,30 @@
 .status_confirmee,
 .status_actif {
   background: var(--indigo-50);
-  color: var(--indigo-dark);
+  color: var(--indigo-deep);
 }
 
 .status_encours,
 .status_placeproposee {
-  background: var(--coral-100);
-  color: var(--coral-deep);
+  background: var(--coral-50);
+  color: var(--ink);
+}
+
+.status_encours::before,
+.status_placeproposee::before,
+.status_annule::before,
+.status_refuse::before,
+.status_suspendu::before,
+.status_rembourse::before {
+  background: var(--coral);
 }
 
 .status_brouillon,
-.status_enattente {
+.status_enattente,
+.status_listeattente {
   background: var(--bg);
   color: var(--muted);
-  border: 1px dashed var(--stone);
+  border: 1px dashed var(--muted);
 }
 
 .status_complet {
@@ -58,7 +68,7 @@
 .status_suspendu,
 .status_rembourse {
   background: var(--white);
-  color: var(--coral-deep);
+  color: var(--ink);
   border: 1px solid var(--coral);
 }
 
@@ -73,9 +83,9 @@
   font-weight: 500;
 }
 
-.chip_teal {
-  background: var(--teal-50);
-  color: var(--teal-deep);
+.chip_indigo {
+  background: var(--indigo-50);
+  color: var(--indigo-deep);
 }
 
 .avatar {
@@ -119,7 +129,7 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: linear-gradient(150deg, var(--teal-200), var(--teal-50));
+  background: var(--indigo-50);
   font-size: 17px;
   font-weight: 600;
   line-height: 1.1;
@@ -131,11 +141,12 @@
 }
 
 .datebadge_coral {
-  background: linear-gradient(150deg, var(--coral-300), var(--coral-100));
+  background: var(--coral-50);
 }
 
 .datebadge_indigo {
-  background: linear-gradient(150deg, var(--indigo-300), var(--indigo-50));
+  background: var(--indigo);
+  color: var(--white);
 }
 
 .datebadge_72 {
@@ -147,45 +158,4 @@
 
 .datebadge_72 span {
   font-size: 11px;
-}
-
-.bar {
-  height: 10px;
-  border-radius: 5px;
-  background: var(--line);
-}
-
-.bar_fill {
-  display: block;
-  height: 10px;
-  border-radius: 5px;
-  background: var(--indigo);
-}
-
-.ring {
-  position: relative;
-  width: 76px;
-  height: 76px;
-}
-
-.ring_track {
-  fill: none;
-  stroke: var(--line);
-  stroke-width: 8;
-}
-
-.ring_value {
-  fill: none;
-  stroke: var(--indigo);
-  stroke-width: 8;
-  stroke-linecap: round;
-}
-
-.ring_label {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-size: 15px;
-  font-weight: 600;
 }

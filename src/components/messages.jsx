@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './messages.css';
 
 export function Banner(props) {
@@ -20,10 +21,18 @@ export function EmptyState(props) {
 }
 
 export function Toast(props) {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (props.onClose) {
+        props.onClose();
+      }
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [props.message]);
+
   return (
     <div className="toast">
       {props.message}
     </div>
   );
 }
-

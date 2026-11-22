@@ -38,3 +38,30 @@ export function DonutChart(props) {
     </div>
   );
 }
+
+export function ProgressBar(props) {
+  return (
+    <div className="progress_bar">
+      <div className="progress_bar_fill" style={{ width: props.value + '%' }} />
+    </div>
+  );
+}
+
+export function ProgressRing(props) {
+  return (
+    <div className="progress_ring">
+      <svg width="76" height="76" viewBox="0 0 76 76">
+        <circle className="progress_ring_track" cx="38" cy="38" r="31" />
+        <circle
+          className="progress_ring_value"
+          cx="38"
+          cy="38"
+          r="31"
+          transform="rotate(-90 38 38)"
+          strokeDasharray={props.value * 1.95 + ' 195'}
+        />
+      </svg>
+      <b className="progress_ring_label">{props.label}</b>
+    </div>
+  );
+}

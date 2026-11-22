@@ -10,7 +10,7 @@
   width: 100%;
   box-sizing: border-box;
   padding: 12px 14px;
-  border: 1px solid var(--line-strong);
+  border: 1px solid var(--line);
   border-radius: 12px;
   background: var(--white);
   font: inherit;
@@ -64,7 +64,7 @@ textarea.input {
   width: 20px;
   height: 20px;
   margin: 0;
-  border: 1.5px solid var(--stone);
+  border: 1.5px solid var(--muted);
   border-radius: 6px;
   background-color: var(--white);
   background-repeat: no-repeat;
@@ -95,7 +95,7 @@ textarea.input {
   height: 28px;
   margin: 0;
   border-radius: 999px;
-  background: var(--line-strong);
+  background: var(--line);
   cursor: pointer;
   transition: background 0.15s;
 }
@@ -131,7 +131,7 @@ textarea.input {
   display: block;
   box-sizing: border-box;
   padding: 22px;
-  border: 1.5px dashed var(--stone);
+  border: 1.5px dashed var(--line);
   border-radius: 16px;
   text-align: center;
   font-size: 13px;

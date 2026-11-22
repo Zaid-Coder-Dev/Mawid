@@ -1,7 +1,15 @@
 import { NavLink, Link } from 'react-router-dom';
 import {
-  LayoutDashboard, CalendarDays, Ticket, User, Info,
-  CirclePlus, Users, ClipboardList, LogOut,FlaskConical 
+  LayoutDashboard,
+  CalendarDays,
+  Ticket,
+  User,
+  Info,
+  CirclePlus,
+  Users,
+  ClipboardList,
+  LogOut,
+  FlaskConical,
 } from 'lucide-react';
 
 import logo from '../assets/logo-mark.png';
@@ -9,33 +17,30 @@ import './sidebar.css';
 
 const links = {
   participant: [
-    ['/participant/tableau-de-bord', 'Tableau de bord', LayoutDashboard],
-    ['/evenements', 'Événements', CalendarDays],
-    ['/participant/reservations', 'Mes réservations', Ticket],
-    ['/participant/profil', 'Profil', User],
-    ['/a-propos', 'À propos', Info],
+    { path: '/participant/tableau-de-bord', label: 'Tableau de bord', Icon: LayoutDashboard },
+    { path: '/evenements', label: 'Événements', Icon: CalendarDays },
+    { path: '/participant/reservations', label: 'Mes réservations', Icon: Ticket },
+    { path: '/participant/profil', label: 'Profil', Icon: User },
+    { path: '/a-propos', label: 'À propos', Icon: Info },
   ],
-
   organisateur: [
-    ['/organisateur/tableau-de-bord', 'Tableau de bord', LayoutDashboard],
-    ['/organisateur/evenements', 'Mes événements', CalendarDays],
-    ['/organisateur/evenements/nouveau', 'Créer un événement', CirclePlus],
-    ['/organisateur/profil', 'Profil', User],
-    ['/a-propos', 'À propos', Info],
+    { path: '/organisateur/tableau-de-bord', label: 'Tableau de bord', Icon: LayoutDashboard },
+    { path: '/organisateur/evenements', label: 'Mes événements', Icon: CalendarDays },
+    { path: '/organisateur/evenements/nouveau', label: 'Créer un événement', Icon: CirclePlus },
+    { path: '/organisateur/profil', label: 'Profil', Icon: User },
+    { path: '/a-propos', label: 'À propos', Icon: Info },
   ],
-
   administrateur: [
-    ['/admin/tableau-de-bord', 'Tableau de bord', LayoutDashboard],
-    ['/admin/utilisateurs', 'Utilisateurs', Users],
-    ['/evenements', 'Événements', CalendarDays],
-    ['/admin/gestion/paiements', 'Gestion', ClipboardList],
-    ['/admin/profil', 'Profil', User],
-    ['/a-propos', 'À propos', Info],
+    { path: '/admin/tableau-de-bord', label: 'Tableau de bord', Icon: LayoutDashboard },
+    { path: '/admin/utilisateurs', label: 'Utilisateurs', Icon: Users },
+    { path: '/evenements', label: 'Événements', Icon: CalendarDays },
+    { path: '/admin/gestion/paiements', label: 'Gestion', Icon: ClipboardList },
+    { path: '/admin/profil', label: 'Profil', Icon: User },
+    { path: '/a-propos', label: 'À propos', Icon: Info },
   ],
 };
 
 export default function Sidebar(props) {
-
 
   return (
     <nav className="sidebar">
@@ -45,29 +50,26 @@ export default function Sidebar(props) {
         <span className="sidebar_label">Mawid</span>
       </div>
 
-      {links[props.role]?.map(([path, label, Icon]) => (
+      {links[props.role].map((link) => (
         <NavLink
-          key={path}
-          to={path}
-          className={({ isActive }) =>
-            isActive ? 'sidebar_item active' : 'sidebar_item'
-          }
+          key={link.path}
+          to={link.path}
+          className={(state) => (state.isActive ? 'sidebar_item active' : 'sidebar_item')}
         >
-          <Icon size={22} strokeWidth={1.7} />
-          <span className="sidebar_label">{label}</span>
+          <link.Icon size={22} strokeWidth={1.7} />
+          <span className="sidebar_label">{link.label}</span>
         </NavLink>
       ))}
 
-      <Link to="/test" className="sidebar_item sidebar_logout">
-        <FlaskConical size={22} strokeWidth={1.7}/>
+      <Link to="/test" className="sidebar_item sidebar_bottom">
+        <FlaskConical size={22} strokeWidth={1.7} />
         <span className="sidebar_label">Components</span>
       </Link>
       
-      <Link to="/connexion" className="sidebar_item sidebar_logout">
+      <Link to="/connexion" className="sidebar_item">
         <LogOut size={22} strokeWidth={1.7} />
         <span className="sidebar_label">Se déconnecter</span>
       </Link>
-
 
     </nav>
   );

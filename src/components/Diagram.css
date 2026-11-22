@@ -30,15 +30,15 @@
 }
 
 .donut_2 {
-  stroke: var(--stone);
+  stroke: var(--indigo-deep);
 }
 
 .donut_3 {
-  stroke: var(--teal-200);
+  stroke: var(--muted);
 }
 
 .donut_4 {
-  stroke: var(--teal-deep);
+  stroke: var(--line);
 }
 
 .donut_label {
@@ -47,5 +47,46 @@
   display: grid;
   place-items: center;
   font-size: 22px;
+  font-weight: 600;
+}
+
+.progress_bar {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--line);
+}
+
+.progress_bar_fill {
+  display: block;
+  height: 10px;
+  border-radius: 5px;
+  background: var(--indigo);
+}
+
+.progress_ring {
+  position: relative;
+  width: 76px;
+  height: 76px;
+}
+
+.progress_ring_track {
+  fill: none;
+  stroke: var(--line);
+  stroke-width: 8;
+}
+
+.progress_ring_value {
+  fill: none;
+  stroke: var(--indigo);
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.progress_ring_label {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
   font-weight: 600;
 }

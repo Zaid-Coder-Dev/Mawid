@@ -10,14 +10,14 @@ export function Popup(props) {
         <h2 className="dialog_title">{props.title}</h2>
         <p className="dialog_body">{props.body}</p>
 
-        {props.textArea && <TextArea label={props.textAreaLabel} />}
+        {props.textArea && <TextArea label={props.textAreaLabel} value={props.textAreaValue} onChange={props.onTextAreaChange} />}
 
         <div className="dialog_actions">
-          <SecondaryButton text="Annuler" />
+          <SecondaryButton text="Annuler" onClick={props.onCancel} />
           {props.tone === 'danger' ? (
-            <DangerButton text={props.confirmLabel} />
+            <DangerButton text={props.confirmLabel} onClick={props.onConfirm} />
           ) : (
-            <PrimaryButton text={props.confirmLabel} />
+            <PrimaryButton text={props.confirmLabel} onClick={props.onConfirm} />
           )}
         </div>
       </div>
@@ -33,7 +33,7 @@ export function Drawer(props) {
       <aside className="drawer">
         <div className="drawer_head">
           <h2 className="drawer_title">{props.title}</h2>
-          <IconButton icon={<X size={18} />} label="Fermer" />
+          <IconButton icon={<X size={18} />} label="Fermer" onClick={props.onClose} />
         </div>
         {props.children}
       </aside>
