@@ -1,9 +1,9 @@
-import PublicLayout from '../../layouts/PublicLayout';
+import AppShell from '../../layouts/AppShell';
 
 export default function APropos() {
   return (
-    <PublicLayout>
+    <AppShell>
       <h1>À propos (page publique)</h1>
-    </PublicLayout>
+    </AppShell>
   );
 }

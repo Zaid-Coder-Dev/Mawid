@@ -1,9 +1,9 @@
-import PublicLayout from '../../layouts/PublicLayout';
+import AppShell from '../../layouts/AppShell';
 
 export default function NouveauMotDePasse() {
   return (
-    <PublicLayout>
+    <AppShell>
       <h1>Nouveau mot de passe (page publique)</h1>
-    </PublicLayout>
+    </AppShell>
   );
 }
