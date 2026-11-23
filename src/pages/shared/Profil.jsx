@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import AppShell from "../layouts/AppShell";
-import PageTitle from "../components/titles";
-import Card from "../components/cards";
-import DescriptionList from "../components/descriptions";
-import { Avatar } from "../components/tags";
-import { TextInput, EmailInput, FileInput } from "../components/inputs";
-import { PrimaryButton, SecondaryButton } from "../components/buttons";
-import { utilisateursDemo } from "../store/demo";
+import AppShell from "../../layouts/AppShell";
+import PageTitle from "../../components/titles";
+import Card from "../../components/cards";
+import DescriptionList from "../../components/descriptions";
+import { Avatar } from "../../components/tags";
+import { TextInput, EmailInput, FileInput } from "../../components/inputs";
+import { PrimaryButton, SecondaryButton } from "../../components/buttons";
+import { utilisateursDemo } from "../../store/demo";
 import "./Profil.css";
 
 export default function Profil(props) {

@@ -1,7 +1,7 @@
 import { Route } from 'react-router-dom';
 import Dashboard from '../pages/participant/Dashboard';
 import Reservations from '../pages/participant/Reservations';
-import Profil from '../pages/Profil';
+import Profil from '../pages/shared/Profil';
 
 export default function participantRoutes() {
   return (

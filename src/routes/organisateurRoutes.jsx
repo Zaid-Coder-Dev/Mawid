@@ -9,7 +9,7 @@ import DetailInscriptions from '../pages/organisateur/DetailInscriptions';
 import DetailEvaluations from '../pages/organisateur/DetailEvaluations';
 import DetailStatistiques from '../pages/organisateur/DetailStatistiques';
 import Modifier from '../pages/organisateur/Modifier';
-import Profil from '../pages/Profil';
+import Profil from '../pages/shared/Profil';
 
 export default function organisateurRoutes() {
   return (
