@@ -4,7 +4,7 @@ import Utilisateurs from '../pages/administrateur/Utilisateurs';
 import GestionPaiements from '../pages/administrateur/GestionPaiements';
 import GestionInscriptions from '../pages/administrateur/GestionInscriptions';
 import GestionEvaluations from '../pages/administrateur/GestionEvaluations';
-import Profil from '../pages/Profil';
+import Profil from '../pages/shared/Profil';
 
 export default function administrateurRoutes() {
   return (

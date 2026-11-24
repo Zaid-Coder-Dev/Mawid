@@ -52,3 +52,47 @@
     width: min(100%, 360px);
   }
 }
+
+
+
+/* ... vos styles existants ... */
+
+.header_search-container {
+  position: relative;
+  /* Ajustez la largeur selon votre design */
+  width: 320px; 
+}
+
+.header_search {
+  width: 100%;
+  /* ... vos styles existants ... */
+}
+
+.header_search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #ece8df;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  list-style: none;
+  padding: 8px 0;
+  margin: 4px 0 0 0;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.header_search-dropdown li {
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #1c1a22;
+  transition: background 0.15s;
+}
+
+.header_search-dropdown li:hover {
+  background: #f7f4ed;
+}

@@ -163,6 +163,31 @@ textarea.input {
   outline-offset: 2px;
 }
 
+.segmented {
+  display: inline-flex;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--white);
+}
+
+.segmented-btn {
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.segmented-btn-on {
+  background: var(--ink);
+  color: var(--white);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .switch,
   .switch::after {

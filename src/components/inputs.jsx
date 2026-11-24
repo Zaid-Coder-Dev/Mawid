@@ -126,3 +126,19 @@ export function FileInput(props) {
     </div>
   );
 }
+
+export function Segmented(props) {
+  return (
+    <div className="segmented">
+      {props.options.map((item) => (
+        <button
+          key={item.value}
+          className={item.value === props.value ? "segmented-btn segmented-btn-on" : "segmented-btn"}
+          onClick={() => props.onChange(item.value)}
+        >
+          {item.label}
+        </button>
+      ))}
+    </div>
+  );
+}

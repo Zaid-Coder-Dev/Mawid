@@ -1,4 +1,5 @@
 import { MoreHorizontal } from "lucide-react";
+import { useState } from "react";
 import AppShell from "../layouts/AppShell";
 import {
   PrimaryButton,
@@ -20,6 +21,7 @@ import {
   Radio,
   Switch,
   FileInput,
+  Segmented,
 } from "../components/inputs";
 import PageTitle from "../components/titles";
 import Card from "../components/cards";
@@ -166,6 +168,8 @@ const changeParam = {
 };
 
 export default function ComponentsTest() {
+  const [periode, setPeriode] = useState("semaine");
+
   return (
     <AppShell role="participant">
       <main className="demo">
@@ -374,6 +378,25 @@ export default function ComponentsTest() {
                   { value: "Atelier", label: "Atelier" },
                   { value: "Concert", label: "Concert" },
                 ]}
+              />
+            </Demo>
+            <Demo
+              name="Segmented"
+              example={`<Segmented\n  options={[\n    { value: "jour", label: "Aujourd'hui" },\n    { value: "semaine", label: "Cette semaine" },\n    { value: "mois", label: "Ce mois" },\n  ]}\n  value={periode}\n  onChange={setPeriode}\n/>`}
+              params={[
+                { name: "options", required: true, description: "Tableau des choix. Chaque choix contient une value (valeur enregistrée) et un label (texte affiché).", options: ["{ value, label }"] },
+                { name: "value", required: true, description: "Valeur actuellement sélectionnée." },
+                { name: "onChange", required: true, description: "Fonction appelée lorsqu'un choix est sélectionné. Elle reçoit la nouvelle value." },
+              ]}
+            >
+              <Segmented
+                options={[
+                  { value: "jour", label: "Aujourd'hui" },
+                  { value: "semaine", label: "Cette semaine" },
+                  { value: "mois", label: "Ce mois" },
+                ]}
+                value={periode}
+                onChange={setPeriode}
               />
             </Demo>
             <Demo name="SearchInput" example={`<SearchInput placeholder="Rechercher un événement…" />`} params={[
