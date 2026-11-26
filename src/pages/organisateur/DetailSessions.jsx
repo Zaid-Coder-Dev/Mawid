@@ -56,7 +56,9 @@ export default function DetailSessions() {
   const [isCancelEventModalOpen, setIsCancelEventModalOpen] = useState(false);
   const [motifAnnulation, setMotifAnnulation] = useState('');
 
-  const { evenements, sessions, intervenants, currentUser } = useSelector((state) => state.evenements || {});
+  // Récupération de toutes les données utiles depuis le state Redux
+  const { evenements, sessions, intervenants, inscriptions, participants, currentUser } =
+    useSelector((state) => state.evenements || {});
 
   const event = evenements?.find((e) => Number(e.id) === Number(id));
 
@@ -70,8 +72,7 @@ export default function DetailSessions() {
     );
   }
 
-  // Note: dans le JSON, les sessions ont "heureDebut" et "heureFin" au lieu de "debut" et "fin"
-  // On adapte le filtre et le tri pour correspondre à vos données
+  // Sessions de l'événement
   const evtSessions = (sessions || [])
     .filter((s) => Number(s.evenementId) === Number(event.id))
     .sort((a, b) => (a.heureDebut || '').localeCompare(b.heureDebut || ''));
@@ -80,6 +81,46 @@ export default function DetailSessions() {
     (sum, s) => sum + calcDuration(s.heureDebut, s.heureFin),
     0
   );
+
+  // --- INSCRIPTIONS / PARTICIPANTS (valeurs dynamiques) ---
+
+  // On privilégie le tableau "inscriptions" s'il existe, sinon "participants"
+  const sourceInscriptions =
+    Array.isArray(inscriptions) && inscriptions.length > 0
+      ? inscriptions
+      : Array.isArray(participants)
+      ? participants
+      : [];
+
+  // Inscriptions rattachées à cet événement
+  const evtInscriptions = sourceInscriptions.filter(
+    (i) =>
+      Number(i.evenementId ?? i.eventId ?? i.evenement_id) === Number(event.id)
+  );
+
+  // Participants confirmés (statuts considérés comme validés)
+  const STATUTS_CONFIRMES = ['paye', 'payé', 'confirme', 'confirmé', 'inscrit', 'valide', 'validé'];
+  const evtParticipants = evtInscriptions.filter((i) => {
+    const st = (i.statut || i.status || i.etat || '').toString().toLowerCase();
+    return STATUTS_CONFIRMES.includes(st);
+  });
+
+  // Liste d'attente
+  const evtListeAttente = evtInscriptions.filter((i) => {
+    const st = (i.statut || i.status || i.etat || '').toString().toLowerCase();
+    return st === 'liste_attente' || st === 'liste d\'attente' || i.listeAttente === true || i.enAttente === true;
+  });
+
+  // Paiements effectués (à rembourser en cas d'annulation)
+  const evtPaiements = evtInscriptions.filter((i) => {
+    const st = (i.statut || i.status || i.etat || '').toString().toLowerCase();
+    return i.paiementEffectue === true || st === 'paye' || st === 'payé' || st === 'paye_en_ligne';
+  });
+
+  // Si aucun statut n'est renseigné, on retombe sur le total d'inscriptions
+  const inscritsCount = evtParticipants.length > 0 ? evtParticipants.length : evtInscriptions.length;
+  const listeAttenteCount = evtListeAttente.length;
+  const paiementsCount = evtPaiements.length > 0 ? evtPaiements.length : evtInscriptions.length;
 
   const badge = formatDateBadge(event.dateDebut);
   const st = STATUS_STYLES[event.statut] || STATUS_STYLES.brouillon;
@@ -96,41 +137,110 @@ export default function DetailSessions() {
 
   const confirmCancelEvent = () => {
     console.log(`Annulation de l'événement ${event.id} avec motif: ${motifAnnulation}`);
+    // TODO: dispatch(actionAnnulerEvenement({ id: event.id, motif: motifAnnulation }))
     closeCancelEventModal();
   };
 
+  // Construction du texte de la modale avec les valeurs dynamiques
+  const cancelBody =
+    `Les ${inscritsCount} participant${inscritsCount > 1 ? 's' : ''} ` +
+    `et les ${listeAttenteCount} personne${listeAttenteCount > 1 ? 's' : ''} en liste d'attente ` +
+    `seront prévenus par e-mail, et les ${paiementsCount} paiement${paiementsCount > 1 ? 's' : ''} ` +
+    `seront remboursés. Cette action est définitive.`;
+
   return (
     <AppShell role={currentUser?.role || 'organisateur'}>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', backgroundColor: '#f7f4ed', minHeight: '100%', padding: '8px 4px 24px' }}>
-        
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '24px',
+          backgroundColor: '#f7f4ed',
+          minHeight: '100%',
+          padding: '8px 4px 24px',
+        }}
+      >
         {/* Fil d'ariane */}
-        <p style={{ margin: 0, fontSize: '12px', color: '#8a8694', cursor: 'pointer' }} onClick={() => navigate('/organisateur/evenements')}>
+        <p
+          style={{ margin: 0, fontSize: '12px', color: '#8a8694', cursor: 'pointer' }}
+          onClick={() => navigate('/organisateur/evenements')}
+        >
           ← Mes événements
         </p>
 
         {/* En-tête événement */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '16px', flexWrap: 'wrap' }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            gap: '16px',
+            flexWrap: 'wrap',
+          }}
+        >
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <div style={{ width: '56px', height: '64px', borderRadius: '12px', backgroundColor: '#dceef2', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#366a75' }}>
-              <strong style={{ fontSize: '20px', fontWeight: 800, color: '#1c1a22', lineHeight: 1 }}>{badge.day}</strong>
-              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.04em', marginTop: '2px' }}>{badge.month}</span>
+            <div
+              style={{
+                width: '56px',
+                height: '64px',
+                borderRadius: '12px',
+                backgroundColor: '#dceef2',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#366a75',
+              }}
+            >
+              <strong style={{ fontSize: '20px', fontWeight: 800, color: '#1c1a22', lineHeight: 1 }}>
+                {badge.day}
+              </strong>
+              <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.04em', marginTop: '2px' }}>
+                {badge.month}
+              </span>
             </div>
 
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 700, color: '#1b1922', letterSpacing: '-0.02em' }}>{event.titre}</h1>
-                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', backgroundColor: st.bg, color: st.color, padding: '4px 12px', borderRadius: '999px', fontSize: '11px', fontWeight: 600 }}>
+                <h1
+                  style={{
+                    margin: 0,
+                    fontSize: '24px',
+                    fontWeight: 700,
+                    color: '#1b1922',
+                    letterSpacing: '-0.02em',
+                  }}
+                >
+                  {event.titre}
+                </h1>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    backgroundColor: st.bg,
+                    color: st.color,
+                    padding: '4px 12px',
+                    borderRadius: '999px',
+                    fontSize: '11px',
+                    fontWeight: 600,
+                  }}
+                >
                   <span style={{ fontSize: '8px' }}>●</span> {st.label}
                 </span>
               </div>
               <p style={{ margin: '6px 0 0', fontSize: '13px', color: '#7c7885' }}>
-                {formatDateLongue(event.dateDebut)} · {event.adresse} · {event.prix > 0 ? `${event.prix} MAD` : 'Gratuit'}
+                {formatDateLongue(event.dateDebut)} · {event.adresse} ·{' '}
+                {event.prix > 0 ? `${event.prix} MAD` : 'Gratuit'}
               </p>
             </div>
           </div>
 
           <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-            <SecondaryButton text="Modifier" onClick={() => navigate(`/organisateur/evenements/${event.id}/modifier`)} />
+            <SecondaryButton
+              text="Modifier"
+              onClick={() => navigate(`/organisateur/evenements/${event.id}/modifier`)}
+            />
             <SecondaryButton text="Annuler l'événement" onClick={openCancelEventModal} />
           </div>
         </div>
@@ -161,25 +271,43 @@ export default function DetailSessions() {
                 }}
               >
                 {tab.label}
-                {tab.key === 'participants' && ` (18)`}
-                {tab.key === 'inscriptions' && ` (6)`}
+                {tab.key === 'participants' && ` (${inscritsCount})`}
+                {tab.key === 'inscriptions' && ` (${inscritsCount})`}
               </button>
             );
           })}
         </div>
 
         {/* Carte du programme */}
-        <div style={{ backgroundColor: '#ffffff', borderRadius: '16px', border: '1px solid #ece8df', padding: '20px 24px', boxShadow: '0 2px 10px rgba(27, 25, 34, 0.03)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
+        <div
+          style={{
+            backgroundColor: '#ffffff',
+            borderRadius: '16px',
+            border: '1px solid #ece8df',
+            padding: '20px 24px',
+            boxShadow: '0 2px 10px rgba(27, 25, 34, 0.03)',
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'flex-start',
+              marginBottom: '20px',
+              flexWrap: 'wrap',
+              gap: '12px',
+            }}
+          >
             <div>
               <h2 style={{ margin: 0, fontSize: '15px', fontWeight: 700, color: '#1c1a22' }}>
-                Programme du {new Date(event.dateDebut).getDate()} {MONTHS_FULL_FR[new Date(event.dateDebut).getMonth()].toLowerCase()}
+                Programme du {new Date(event.dateDebut).getDate()}{' '}
+                {MONTHS_FULL_FR[new Date(event.dateDebut).getMonth()].toLowerCase()}
               </h2>
               <p style={{ margin: '4px 0 0', fontSize: '12px', color: '#8a8694' }}>
                 {evtSessions.length} sessions · {totalHeures.toFixed(1).replace('.', ' h ')} au total
               </p>
             </div>
-  
+
             <PrimaryButton
               text="Ajouter une session"
               onClick={() => navigate(`/organisateur/evenements/${event.id}/sessions/nouvelle`)}
@@ -188,7 +316,21 @@ export default function DetailSessions() {
 
           {/* Tableau des sessions */}
           <div style={{ width: '100%' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 140px) minmax(0, 1fr) minmax(0, 180px) minmax(0, 100px) minmax(0, 80px)', gap: '12px', padding: '0 0 12px', borderBottom: '1px solid #ece8df', fontSize: '10px', fontWeight: 700, color: '#a8a3b0', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns:
+                  'minmax(0, 140px) minmax(0, 1fr) minmax(0, 180px) minmax(0, 100px) minmax(0, 80px)',
+                gap: '12px',
+                padding: '0 0 12px',
+                borderBottom: '1px solid #ece8df',
+                fontSize: '10px',
+                fontWeight: 700,
+                color: '#a8a3b0',
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+              }}
+            >
               <div>Horaire</div>
               <div>Session</div>
               <div>Intervenant</div>
@@ -202,12 +344,28 @@ export default function DetailSessions() {
               </div>
             ) : (
               evtSessions.map((s) => {
-                // Recherche du nom de l'intervenant
-                const intervenant = (intervenants || []).find(i => Number(i.id) === Number(s.intervenantId));
-                const nomIntervenant = intervenant ? `${intervenant.prenom} ${intervenant.nom}` : '—';
+                const intervenant = (intervenants || []).find(
+                  (i) => Number(i.id) === Number(s.intervenantId)
+                );
+                const nomIntervenant = intervenant
+                  ? `${intervenant.prenom} ${intervenant.nom}`
+                  : '—';
 
                 return (
-                  <div key={s.id} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 140px) minmax(0, 1fr) minmax(0, 180px) minmax(0, 100px) minmax(0, 80px)', gap: '12px', alignItems: 'center', padding: '14px 0', borderBottom: '1px solid #f0ece3', fontSize: '13px', color: '#1c1a22' }}>
+                  <div
+                    key={s.id}
+                    style={{
+                      display: 'grid',
+                      gridTemplateColumns:
+                        'minmax(0, 140px) minmax(0, 1fr) minmax(0, 180px) minmax(0, 100px) minmax(0, 80px)',
+                      gap: '12px',
+                      alignItems: 'center',
+                      padding: '14px 0',
+                      borderBottom: '1px solid #f0ece3',
+                      fontSize: '13px',
+                      color: '#1c1a22',
+                    }}
+                  >
                     <div style={{ fontWeight: 600 }}>
                       {s.heureDebut || '--:--'} – {s.heureFin || '--:--'}
                     </div>
@@ -215,11 +373,21 @@ export default function DetailSessions() {
                     <div style={{ color: '#5f5b66' }}>{nomIntervenant}</div>
                     <div style={{ color: '#5f5b66' }}>{s.salle || '—'}</div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                      {/* MODIFICATION ICI : redirection vers la page de modification */}
                       <button
                         type="button"
-                        onClick={() => navigate(`/organisateur/evenements/${event.id}/sessions/modifier/${s.id}`)}
-                        style={{ background: '#ffffff', border: '1px solid #e6e2d8', borderRadius: '999px', padding: '4px 12px', fontSize: '11px', fontWeight: 600, color: '#5e5a66', cursor: 'pointer' }}
+                        onClick={() =>
+                          navigate(`/organisateur/evenements/${event.id}/sessions/modifier/${s.id}`)
+                        }
+                        style={{
+                          background: '#ffffff',
+                          border: '1px solid #e6e2d8',
+                          borderRadius: '999px',
+                          padding: '4px 12px',
+                          fontSize: '11px',
+                          fontWeight: 600,
+                          color: '#5e5a66',
+                          cursor: 'pointer',
+                        }}
                       >
                         Modifier
                       </button>
@@ -231,11 +399,11 @@ export default function DetailSessions() {
           </div>
         </div>
 
-        {/* MODALE D'ANNULATION */}
+        {/* MODALE D'ANNULATION (valeurs dynamiques) */}
         {isCancelEventModalOpen && (
           <Popup
             title={`Annuler « ${event.titre} » ?`}
-            body={`Les 18 participants et les 2 personnes en liste d'attente seront prévenus par e-mail, et les 18 paiements seront remboursés. Cette action est définitive.`}
+            body={cancelBody}
             tone="danger"
             confirmLabel="Annuler l'événement"
             onCancel={closeCancelEventModal}
@@ -246,7 +414,6 @@ export default function DetailSessions() {
             onTextAreaChange={(e) => setMotifAnnulation(e.target.value)}
           />
         )}
-
       </div>
     </AppShell>
   );

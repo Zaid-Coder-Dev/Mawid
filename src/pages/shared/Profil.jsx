@@ -1,5 +1,10 @@
+
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+
+
+
+
 import AppShell from "../../layouts/AppShell";
 import PageTitle from "../../components/titles";
 import Card from "../../components/cards";
@@ -8,7 +13,9 @@ import { Avatar } from "../../components/tags";
 import { TextInput, EmailInput, FileInput } from "../../components/inputs";
 import { PrimaryButton, SecondaryButton } from "../../components/buttons";
 import { utilisateursDemo } from "../../store/demo";
+
 import { updateUser } from "../../store/evenementActions"; // ← AJOUT
+
 import "./Profil.css";
 
 export default function Profil(props) {

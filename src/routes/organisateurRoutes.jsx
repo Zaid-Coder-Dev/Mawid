@@ -11,8 +11,10 @@ import DetailStatistiques from '../pages/organisateur/DetailStatistiques';
 import Modifier from '../pages/organisateur/Modifier';
 import Profil from '../pages/shared/Profil';
 
+
 // On importe le composant qui gère le formulaire (Ajout ET Modification)
 import FormulaireSession from '../pages/organisateur/AjouterSession'; 
+
 
 export default function organisateurRoutes() {
   return (
