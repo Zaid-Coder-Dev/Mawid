@@ -1,4 +1,4 @@
-// store/actiontypes.js
+
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const LOGOUT_USER = 'LOGOUT_USER';
 export const REGISTER_USER = 'REGISTER_USER';

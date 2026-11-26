@@ -1,4 +1,4 @@
-import * as types from './actiontypes';
+import * as types from './organisateur_actions';
 import db from '../data/db.json';
 import { utilisateursDemo } from './demo';
 
@@ -19,7 +19,7 @@ const initialState = {
   viewMode: 'cartes',
 };
 
-export default function evenementReducer(state = initialState, action) {
+export default function organisateur_reducer(state = initialState, action) {
   switch (action.type) {
     case types.SET_CURRENT_USER:
       return { ...state, currentUser: action.payload };

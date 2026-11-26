@@ -1,9 +1,0 @@
-import AppShell from '../../layouts/AppShell';
-
-export default function Dashboard() {
-  return (
-    <AppShell role="participant">
-      <h1>Tableau de bord (participant)</h1>
-    </AppShell>
-  );
-}

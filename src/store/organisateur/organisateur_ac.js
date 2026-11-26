@@ -1,4 +1,4 @@
-import * as types from './actiontypes';
+import * as types from './organisateur_actions';
 
 export const setCurrentUser = (user) => ({
   type: types.SET_CURRENT_USER,

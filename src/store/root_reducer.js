@@ -1,9 +1,8 @@
-// src/store/rootReducer.js
 import { combineReducers } from 'redux';
-import evenementReducer from './evenementReducer';
+import organisateur_reducer from './organisateur/organisateur_reducer';
 
 const rootReducer = combineReducers({
-  evenements: evenementReducer,
+  organisateur: organisateur_reducer,
 });
 
 export default rootReducer;
